@@ -1,0 +1,28 @@
+.label char_sx=$4000
+.label draw_horizontal_border_2=$5c65
+.label LP=$5c6b
+.label bottom_border_wave=$6018
+.label patterns_sx_2=$4048
+.label top_border_wave=$6000
+.label Time_1=$50ad
+.label patterns_top=$4082
+.label top_border_char_start=$4028
+.label top_irq=$5076 {
+}
+.label draw_columns=$5a00
+.label Time_3=$50c8
+.label Time_2=$50bd
+.label patterns_sx=$4038
+.label sprites=$5400
+.label right_border_char_start=$4018
+.label left_border_char_start=$4008
+.label code=$5000
+.label raster_wave_sin=$5e00
+.label d016_sin=$5f00
+.label draw_horizontal_border=$5beb
+.label patterns_dx=$4061
+.label draw_chars=$5b60
+.label border_wave=$5d00
+.label bottom_irq=$50e0 {
+}
+.label patterns_dx_2=$4071

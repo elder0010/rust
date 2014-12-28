@@ -1,0 +1,22 @@
+
+C:\Users\Diego\Dropbox\C64\Rust\Elder\chunky>call kick transition\transition.asm -o transition\transition.prg 
+//------------------------------------------------------
+//------------------------------------------------------
+//      Kick Assembler v3.29 - (C)2013 Mads Nielsen     
+//------------------------------------------------------
+//------------------------------------------------------
+parsing
+flex pass 1
+  .if(is_plane_drawable(p1,p2,p3)<0){
+   .eval facce = facce | 1
+  }
+  .eval calc_angle(p1,p2,p3,lista_color0)
+        ^
+
+Error: Invalid number of arguments : calc_angle
+at line 91, column 9 in C:\Users\Diego\Dropbox\C64\Rust\Elder\chunky\data\cube.asm
+called at line 249, column 13 in C:\Users\Diego\Dropbox\C64\Rust\Elder\chunky\data\cube.asm
+called at line 414, column 1 in C:\Users\Diego\Dropbox\C64\Rust\Elder\chunky\ninja.asm
+called at line 579, column 1 in transition\transition.asm
+
+

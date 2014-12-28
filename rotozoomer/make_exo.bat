@@ -1,0 +1,2 @@
+java -jar c:\kick\KickAss.jar c:\kick\rust\Elder\rotozoomer\rotozoomer.asm -o c:\kick\rust\Elder\rotozoomer\rotozoomer.prg
+c:\kick\exomizer level -c c:\kick\rust\Elder\rotozoomer\rotozoomer.prg -o c:\kick\rust\Elder\rotozoomer\roto.prg

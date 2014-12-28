@@ -1,0 +1,114 @@
+.label bubble_speed=$8110
+.label blfiwt=$29b0
+.label plexirq=$29c0
+.label bubble_sprite=$7fc0
+.label bubble_start_x=$8100
+.label rlnext=$2cc5
+.label blplexirq=$29a0
+.label psfontsize=$2c4e
+.label ctt=$36de
+.label irqcontinue=$2a17
+.label clear_final_screen=$33f8
+.label pscontinue=$2c20
+.label irqcommon=$2a5c
+.label fld_top_irq=$3600 {
+}
+.label sprxhi=$2d37
+.label parsespecial=$2c08
+.label clock_irq=$334f {
+}
+.label exit=$3643 {
+}
+.label sin_table=$8000
+.label esloop=$2b47
+.label start=$2800
+.label init_sprites=$7efe
+.label clean_screen=$7eea
+.label scrollsetshape=$2ac7
+.label move_bubble=$8120
+.label fld_bottom_irq=$364a {
+}
+.label psinterlinea=$2c3d
+.label fld_loop=$3728
+.label irqhi=$363e
+.label killall=$36c0
+.label fld_end_irq=$3684 {
+}
+.label clock_init_sprites=$33ea
+.label writechar8bit=$2bae
+.label enddemo=$36a1
+.label psloop=$2c0a
+.label writeroutine=$2b61
+.label createtable=$2cd2
+.label clock_scene_start=$3300
+.label pssetil=$2c42
+.label readline=$2c72
+.label display_bitmap=$340c
+.label scrollsetcolor=$2abb
+.label scene_start=$7ea0
+.label wob_pic_y=$3450
+.label wob_pic_x=$3442
+.label end_irq=$338f {
+}
+.label xinvspritetable=$2b2f
+.label skipline=$2be7
+.label nothing=$370b
+.label linee_fld=$3649
+.label d011sw=$36d6
+.label emptysprite=$2b3d
+.label fld_first_line=$3721
+.label can_fade_out=$368c
+.label dlf=$336b
+.label rlexit=$2cb0
+.label skip=$362c {
+}
+.label wrwait=$2baa
+.label totalend=$2ae4
+.label sidirq=$2947
+.label do_fld=$3714
+.label waittbl=$2af0
+.label sprxlo=$2d22
+.label wrparse=$2b90
+.label scrolltext_source=$6800 {
+}
+.label msx_sync_irq=$345e {
+}
+.label goup=$360b
+.label rlskip=$2cbd
+.label fixshapes=$2a85
+.label scrollsprites=$2a63
+.label irqset=$29db
+.label fontstruct=$2d4c
+.label dlr=$812e
+.label fiwt=$29d0
+.label slcharloop=$2beb
+.label ytable=$2aff
+.label preirq2=$28ff
+.label preirq1=$28e0
+.label ctloop=$2ce8
+.label psexit=$2c23
+.label clean_charscreen=$33d6
+.label sin_table_y=$3500
+.label shapespritetable=$2b36
+.label irq=$7ed6 {
+}
+.label irqlo=$3639
+.label nextd018=$29d6
+.label d018table=$2b1f
+.label wccharloop=$2bbb
+.label preset=$2880
+.label wrcheck=$2b9b
+.label rlloop=$2c89
+.label scrollsety=$2a9d
+.label fldjmp=$36c3
+.label shapetable=$2b0f
+.label scrollsetx=$2aa9
+.label psspeed=$2c6a
+.label endmov=$8159
+.label shape2=$2ad7
+.label fd_vl=$3690
+.label can_scroll=$3345
+.label initirq=$2845
+.label psstop=$2c26
+.label relocate_text=$33a0
+.label wrwrite=$2ba6

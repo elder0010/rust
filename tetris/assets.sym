@@ -1,0 +1,3 @@
+.label start_offsets=$f600
+.label sequenza_pezzi=$f500
+.label skull_chars_src=$f700

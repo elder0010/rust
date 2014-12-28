@@ -1,0 +1,182 @@
+.label can_wobble_right=$5b11
+.label x_offsets_base=$8df6
+.label wait_raster=$87f7
+.label no_move_y=$5536
+.label nmi_bottom=$5500
+.label DARK_GRAY_FADER=$8978
+.label cl_scrn=$5c43
+.label TIME_IRQ=$3d54
+.label linect=$5b9e
+.label fld_table=$5e00
+.label top_border_wobble_irq=$3e06 {
+}
+.label skip_move=$5589
+.label BLUE_FADER=$8950
+.label idler_irq=$5d9a {
+}
+.label JMP_ME=$50c1 {
+}
+.label init_sprites=$5317
+.label transition_end_irq=$3e57 {
+}
+.label col_src=$8716
+.label frames_pt_tbl=$89c0
+.label wob_frame=$53e4
+.label move_down_tentacles=$55ab
+.label lnn=$5c45
+.label top_border_char_start=$5a28
+.label wst=$50ce
+.label n_plex=$5252
+.label intro_irq=$5643 {
+}
+.label loop=$50be
+.label dimezzatore=$5dce
+.label table_lo=$8900
+.label can_wobble=$5b2e
+.label wtr=$530a
+.label move_y=$554a
+.label waitrst=$546e
+.label IRQ_CHOOSE_LO=$3d59
+.label endcase=$5731
+.label starty=$5414
+.label delayer=$5554
+.label LINE_IRQ=$3dcb
+.label case_b=$5722
+.label case_a=$5710
+.label trigger_go_down_movement=$55aa
+.label nmi_top=$54c0
+.label scr_morph_high2=$8774
+.label main_fade=$8711
+.label right_border_char_start=$5a18
+.label scr_morph_high=$8732
+.label manage_irq=$528a {
+}
+.label clear_screen_loop=$50e1
+.label lines_done=$5dcd
+.label init_nmi=$5440
+.label FLD_WAIT=$50de
+.label clear_bitmap=$558a
+.label current_pt_tbl=$8a00
+.label code=$5000
+.label msx_fld_irq=$5d75 {
+}
+.label spriteData=$4400 {
+}
+.label x_wob=$8cf6
+.label raster_bottom_irq=$3da7 {
+}
+.label backd=$87f7
+.label FILLER_SPRITE_Y_INTRO=$5ad7
+.label draw_chars=$5682
+.label border_wave=$5900
+.label table_hi=$8910
+.label wob_x_sprites=$5352
+.label TOP_COL_020=$3d97
+.label TOP_COL_021=$3d9c
+.label altezze_sprites=$8e08
+.label go_wobble=$5ac8
+.label init_loop=$558e
+.label d011_value=$3e54
+.label sprte_ct=$535a
+.label frame_sprites=$8a3c
+.label CYAN_FADER=$8938
+.label GREEN_FADER=$8948
+.label can_go_fld=$52df
+.label max_fld_lines=$5dcc
+.label draw_bordo_dx=$5c17
+.label pre_border_wobble_delay=$3d22
+.label wait_irq=$3d01 {
+}
+.label GRAY_FADER=$8980
+.label char_sx=$5a00
+.label LIGHT_GRAY_FADER=$8998
+.label move_routine=$52ce
+.label intro_girl_irq=$5ab8 {
+}
+.label fr_ofs=$53b4
+.label ORANGE_FADER=$8960
+.label frame_wob_pt_table=$8dfe
+.label wobbler_pointer=$5f00
+.label can_init_next_scene=$3e55
+.label cls_ln=$5c49
+.label YELLOW_FADER=$8958
+.label fld_pointer=$5dcb
+.label fld_top_irq=$5cd7 {
+}
+.label pre_delay=$5b1a
+.label BROWN_FADER=$8968
+.label fld_loop=$5cf1
+.label PURPLE_FADER=$8940
+.label skip_move2=$55fd
+.label Time_1=$3d7b
+.label can_go_fd=$50ad
+.label raster_top_irq=$3d45 {
+}
+.label main_pre_loader=$50f7
+.label BLACK_FADER=$8920
+.label LIGHT_RED_FADER=$8970
+.label draw_bordo_sx=$5bcd
+.label dx_04=$5b60
+.label dx_03=$5b5d
+.label endrep=$523c
+.label tentacoli_y_d012=$8a54
+.label tentacoli_y_d011=$8b65
+.label WHITE_FADER=$8928
+.label cntr=$3de5
+.label top_irq=$515f {
+}
+.label draw_columns=$5b42
+.label Time_3=$3d96
+.label plex_irq=$51c5
+.label wob_pt_x=$8dfa
+.label Time_2=$3d8b
+.label go_to_manager_irq=$5260 {
+}
+.label RED_FADER=$8930
+.label of_dx_0=$5c17
+.label of_dx_1=$5c1a
+.label FADE_TABLE_S=$874c
+.label nmi_val=$552d
+.label valori_d011=$8e10
+.label sx_02=$5b5a
+.label LIGHT_BLUE_FADER=$8990
+.label sx_01=$5b57
+.label FADE_TABLE_C=$872c
+.label LIGHT_GREEN_FADER=$8988
+.label can_go_wobble=$3e56
+.label scr_src_low=$8757
+.label skip_wobble=$5b17
+.label delayer2=$55ae
+.label border_charset=$5a00
+.label left_border_char_start=$5a08
+.label FADE_TABLE_SL=$876d
+.label delayer_tk=$5daa
+.label nor_fr=$53df
+.label position_cover_sprites=$55fe
+.label has_finished_clear_screen=$3d00
+.label colour_colonne=$5b55
+.label col_morph=$872f
+.label row_ct=$5372
+.label fade_loop=$8714
+.label calc_y_sprites=$5410
+.label linect1=$5bf4
+.label linect2=$5c3c
+.label reset_pointers=$87ec
+.label of_sx_1=$5bd2
+.label init_finished=$5ab7
+.label of_sx_0=$5bcf
+.label frames_wob=$8c76
+.label next_pt=$3e34
+.label fine=$5d18
+.label start_loop=$5389
+.label draw_frame=$5386
+.label col_ct=$5386
+.label sprites_source=$4400
+.label starty2=$5428
+.label x_wob_pt=$8a18
+.label noirq=$5d6f {
+}
+.label init_wait_irq=$5a92 {
+}
+.label IRQ_CHOOSE_HI=$3d5e
+.label manage_irq_line=$526a

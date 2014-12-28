@@ -1,0 +1,1 @@
+java -jar c:\kick\KickAss.jar c:\kick\rust\Elder\wobbler\plex_test.asm -o c:\kick\rust\Elder\wobbler\plex_test.prg

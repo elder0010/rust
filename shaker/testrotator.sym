@@ -1,0 +1,21 @@
+.label irq_bottom=$9c42 {
+}
+.label rotator_sine=$ae00
+.label copy_line=$9c93
+.label ss=$9cb2
+.label pt_rt=$98d4
+.label rotator_chars=$c000
+.label irq_top=$98b5
+.label y_cr=$98c5
+.label rotator_screen=$c918
+.label newline=$9cad
+.label frames=$a000
+.label ll=$9caf
+.label rotator_frame_address_hi=$ad00
+.label colour_table=$b000
+.label end=$9c71
+.label draw_frame=$9c71
+.label scene_start=$9800
+.label rotator_frame_address_lo=$ac00
+.label raster_sine=$af00
+.label rotator_stabilizer_irq=$9890

@@ -1,0 +1,61 @@
+.label clear_screen_sprites=$7c70
+.label fade_table=$7ca5
+.label fade_butterfly=$7cbb
+.label outro_irq_top=$2800 {
+}
+.label nod=$7c36
+.label fade_chk=$7cdc
+.label sprites_y_reverse=$9b07
+.label outro_irq_msx=$286e {
+}
+.label fade_ptr=$7cb9
+.label bg_irq=$7bb9 {
+}
+.label raster1=$7994
+.label raster2=$7af2
+.label lower_fix_col=$7aba
+.label fade_dir=$7cd9
+.label tetris_assets=$2900
+.label start_offsets=$2a00
+.label new_irq=$7a54
+.label msx_irq=$7a03
+.label calc_x_sprites=$7c1c
+.label puntatori_reverse=$9b00
+.label d010_mask=$7c68
+.label cover_sprite_2_x=$7a4a
+.label cover_sprite_2_y=$7a4f
+.label skull_chars_src=$2b00
+.label msx_irq_r=$7ad2
+.label must_fade_butterfly=$7ca4
+.label new_irq_r=$7ae1
+.label lower_bt_col=$7a23
+.label final_irq=$2898 {
+}
+.label skip=$7a1c
+.label sine_x=$923f
+.label sine_y=$913f
+.label final_check=$7b88
+.label fade_delay=$7cba
+.label puntatori_wob=$7cfb
+.label fade_table_btn=$7caf
+.label reflex_irq_line=$7a0d
+.label reflection_irq=$7a5a
+.label outro_irq_bottom=$282a {
+}
+.label sprites_wob_y=$7cf3
+.label sprites_reverse_source=$9400
+.label nx_irq_line=$2810
+.label calc_y_sprites=$7bde
+.label puntatori=$7ce5
+.label upper_bt_col=$7b3d
+.label nogo=$7cc0
+.label bg_1=$7a65
+.label sprites_source=$8500
+.label giri_f=$7b6d
+.label sequenza_pezzi=$2900
+.label sprites_y=$7cec
+.label place_sprites=$7d17
+.label bg_2=$7a68
+.label cover_sprite_1_x=$799c
+.label cover_sprite_1_y=$79a1
+.label okfd=$7cc2

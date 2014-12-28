@@ -1,0 +1,3 @@
+.label irq1=$c06d {
+}
+.label scene_start=$c000

@@ -1,0 +1,10 @@
+.label irq=$83e {
+}
+.label ras=$2000
+.label init_nmi=$898
+.label rst_pt=$2100
+.label music_irq=$866 {
+}
+.label waitrst=$8d9
+.label scene_start=$80e
+.label nmi=$833

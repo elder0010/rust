@@ -1,0 +1,26 @@
+.label anim_sprites=$fa86
+.label final_exit=$facc
+.label dly2=$fb29
+.label can_load=$f449
+.label fade_out_sprites=$fb1b
+.label dly=$fafe
+.label no_fade=$fb1a
+.label init_sprites=$fa00
+.label go_scene=$f493
+.label absorber_irq=$f486 {
+}
+.label irq=$f4c0 {
+}
+.label move_up_sprites=$faaf
+.label move_sprites=$fa72
+.label fade_sprite_tbl_bottom=$fae8
+.label sprites_source=$f500
+.label noreset_frames=$faae
+.label scene_start=$f400
+.label fade_in_sprites=$faf0
+.label finished_load=$f4db
+.label next_scene_addr=$f483
+.label fade_rt=$f4c8
+.label fade_sprite_tbl_top=$fae0
+.label store_cury=$f4d9
+.label sintable=$fc00

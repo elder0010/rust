@@ -1,0 +1,16 @@
+.label screen_target_lo=$f100
+.label screen_target_hi=$f500
+.label put_square=$f0b1
+.label fade_start_lo=$f0b1
+.label count_frames=$f911
+.label fade_start_hi=$f0b7
+.label fade_irq=$f042 {
+}
+.label code=$2000
+.label border_fade_tbl=$f900
+.label tg_scr=$f0bf
+.label main_routine=$f000
+.label prepare_char=$f0a6
+.label border_fade_pt=$f910
+.label end_irq=$f06c {
+}

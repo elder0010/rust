@@ -1,0 +1,98 @@
+.label next_irq_d012=$9982
+.label exit_scene=$8787
+.label irq_bottom=$875a {
+}
+.label irq_waster=$98db {
+}
+.label copy_line=$88a0
+.label dly2=$9afa
+.label pt_rt=$821a
+.label frame_count=$8996
+.label illegal_bottom_outro_irq=$894f {
+}
+.label frame_tbl_addr_hi=$88a8
+.label fade_screen_tbl=$9b10
+.label choose_frame_table=$886b
+.label data_screen=$5f40
+.label calcola_fld=$999d
+.label newline=$88ba
+.label illegal_table=$8000
+.label nxt_irq_lo=$99dc
+.label scene_end=$989b
+.label fld_loop=$9930
+.label ll=$88bc
+.label kill_colours=$9878
+.label rotator_frame_address_hi=$abc2
+.label tmp_colour_table=$8a00
+.label colour_table=$b500
+.label stabilizer_irq=$9d00
+.label end=$8840
+.label giri_finali=$881d
+.label rotator_part_6=$882e
+.label music_irq=$995c {
+}
+.label colfd3=$87d5
+.label rotator_part_3=$87d5
+.label colfd2=$87bc
+.label rotator_part_2=$87bc
+.label rotator_part_5=$880b
+.label colfd4=$87ef
+.label rotator_part_4=$87ef
+.label colfd7=$882e
+.label scene_start=$9800
+.label colfd6=$880b
+.label rotator_part_1=$87a2
+.label illegal_pt=$9dae
+.label top_irq=$9909 {
+}
+.label bitmap_irq=$99c2 {
+}
+.label next_irq_lo=$9973
+.label fld_first_line=$9929
+.label endchs=$889f
+.label bitmap_down_irq=$99ec {
+}
+.label stabilizer_outro_irq=$88e7
+.label illegal_bottom_irq=$9d69 {
+}
+.label final_irq=$6c00 {
+}
+.label skip=$9956 {
+}
+.label rotator_chars_src=$af00
+.label init_filler_sprite=$9a60
+.label rotator_sine=$ad00
+.label reloc_all=$98a3
+.label filler_sprite=$6340
+.label ss=$88bf
+.label sk=$9a1e {
+}
+.label fade_out_sprites=$9ae8
+.label irq_top=$8201
+.label illegal_top_irq=$9d25
+.label wait_for_colours=$986e
+.label sine=$9c00
+.label draw_pic=$9a24
+.label wait_redraw_pic=$9894
+.label frame_tbl_addr_lo=$88a2
+.label nxt_irq_hi=$99e1
+.label rotator_frame_address_hi_2=$ac30
+.label colfd=$87a2
+.label raster_anim_routine=$8782
+.label rotator_frame_address_lo_2=$ab54
+.label move_filler_sprites=$9ab9
+.label illegal_top_outro_irq=$890b
+.label irq_delay=$9908
+.label skppp=$9da5
+.label can_go_scene=$9a06
+.label draw_pic_colours=$9a42
+.label draw_frame=$8840
+.label intro_end=$98ee
+.label frames_2=$9f00
+.label frames_1=$8b00
+.label data_col=$6800
+.label rotator_frame_address_lo=$aae6
+.label raster_sine=$ae00
+.label next_irq_hi=$996e
+.label rotator_stabilizer_irq=$8100
+.label dsp_cnt=$8858

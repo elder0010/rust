@@ -1,0 +1,32 @@
+.label px_table=$214e
+.label init_scene=$2117
+.label nextline=$20f6
+.label targetLowBuffer1=$b0c8
+.label targetLowBuffer2=$b12c
+.label prepara_pic=$21e6
+.label colora=$20f4
+.label irq_d011_table=$b21e
+.label offset_1=$4400
+.label offset_0=$4000
+.label targetHiBuffer2=$b15e
+.label bk=$2062
+.label sourceHiBuffer2=$b096
+.label sourceHiBuffer1=$b032
+.label source_buffer_0=$a000
+.label source_buffer_1=$a400
+.label bitmap=$6000
+.label code=$2000
+.label targetHiBuffer1=$b0fa
+.label triggered_line_irq=$209f {
+}
+.label char1=$20f2
+.label char2=$20f3
+.label sourceLowBuffer2=$b064
+.label sourceLowBuffer1=$b000
+.label disegna_pic_debug=$21b0
+.label start_linee=$2132
+.label irq_d012_table=$b200
+.label end_linee=$2140
+.label standard_line_irq=$2065 {
+}
+.label nmi=$20f1

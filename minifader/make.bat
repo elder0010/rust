@@ -1,0 +1,1 @@
+java -jar c:\kick\KickAss.jar c:\kick\rust\Elder\minifader\minifader.asm -o c:\kick\rust\Elder\minifader\minifader.prg

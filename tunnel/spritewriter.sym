@@ -1,0 +1,16 @@
+.label buffer_area_pt=$9510
+.label scroll_text=$9600
+.label buffer_area_address_lo=$9500
+.label write_char=$947e
+.label print_chars=$9512
+.label char_address_lo=$9508
+.label scroll_charNo=$961f
+.label chars_to_print=$961b
+.label char_address_hi=$950c
+.label charset=$3800
+.label code=$9400
+.label xback=$9511
+.label source=$9497
+.label prepare_char_addresses=$9456
+.label buffer_area_address_hi=$9504
+.label target=$949a
