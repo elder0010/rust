@@ -1,3 +1,4 @@
-make.bat
-
-c:\kick\exomizer sfx $9800 c:\kick\rust\Elder\shaker\shaker.prg -o c:\kick\rust\Elder\shaker\shaker_exo.prg
+@ECHO OFF
+SET BIN="..\bin"
+call make.bat
+%BIN%\exomizer sfx $9800 ..\shaker\shaker.prg -o ..\shaker\shaker_exo.prg

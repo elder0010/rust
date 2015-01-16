@@ -1,1 +1,3 @@
-java -jar c:\kick\KickAss.jar c:\kick\rust\Elder\shaker\shaker.asm -o c:\kick\rust\Elder\shaker\shaker.prg
+@ECHO OFF
+SET BIN="..\bin"
+java -jar %BIN%\KickAss.jar shaker.asm -o shaker.prg

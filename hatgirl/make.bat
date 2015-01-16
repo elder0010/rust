@@ -1,1 +1,3 @@
-java -jar c:\kick\KickAss.jar c:\kick\rust\Elder\hatgirl\hatgirl.asm -o c:\kick\rust\Elder\hatgirl\hatgirl.prg
+@ECHO OFF
+SET BIN="..\bin"
+java -jar %BIN%\KickAss.jar hatgirl.asm -o hatgirl.prg

@@ -1,3 +1,5 @@
-call c:\kick\rust\Elder\butterfly\make.bat
-c:\kick\exomizer level c:\kick\rust\Elder\butterfly\butterfly.prg -o c:\kick\rust\Elder\butterfly\frf.prg
-del c:\kick\rust\Elder\butterfly\butterfly.prg
+@ECHO OFF
+SET BIN="..\bin"
+call make.bat
+%BIN%\exomizer level butterfly.prg -o frf.prg
+del butterfly.prg

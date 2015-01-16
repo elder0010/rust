@@ -1,1 +1,3 @@
-java -jar c:\kick\KickAss.jar c:\kick\rust\Elder\tunnel\outro_irqs.asm -o c:\kick\rust\Elder\tunnel\outro.prg
+@ECHO OFF
+SET BIN="..\bin"
+java -jar %BIN%\KickAss.jar outro_irqs.asm -o outro.prg

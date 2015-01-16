@@ -1,3 +1,5 @@
-call c:\kick\rust\Elder\shaker\make.bat
-c:\kick\exomizer level c:\kick\rust\Elder\shaker\shaker.prg -o c:\kick\rust\Elder\shaker\carp.prg
-del c:\kick\rust\Elder\shaker\shaker.prg
+@ECHO OFF
+SET BIN="..\bin"
+call make.bat
+%BIN%\exomizer level shaker.prg -o carp.prg
+del shaker.prg

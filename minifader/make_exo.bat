@@ -1,3 +1,5 @@
-call c:\kick\rust\Elder\minifader\make.bat
-c:\kick\exomizer level c:\kick\rust\Elder\minifader\minifader.prg -o c:\kick\rust\Elder\minifader\squ.prg
+@ECHO OFF
+SET BIN="..\bin"
+call make.bat
+%BIN%\exomizer level minifader.prg -o squ.prg
 del minifader.prg

@@ -1,3 +1,5 @@
-call c:\kick\rust\Elder\butterfly\make_routine.bat
-c:\kick\exomizer level -c c:\kick\rust\Elder\butterfly\butterfly_routine.prg -o c:\kick\rust\Elder\butterfly\btr.prg
-del c:\kick\rust\Elder\butterfly\butterfly_routine.prg
+@ECHO OFF
+SET BIN="..\bin"
+call make_routine.bat
+%BIN%\exomizer level -c butterfly_routine.prg -o btr.prg
+del butterfly_routine.prg

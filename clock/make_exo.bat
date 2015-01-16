@@ -1,3 +1,5 @@
-call c:\kick\rust\Elder\clock\make.bat
-c:\kick\exomizer level c:\kick\rust\Elder\clock\clock.prg -o c:\kick\rust\Elder\clock\en.prg
-del c:\kick\rust\Elder\clock\clock.prg
+@ECHO OFF
+SET BIN="..\bin"
+call make.bat
+%BIN%\exomizer level clock.prg -o en.prg
+del clock.prg

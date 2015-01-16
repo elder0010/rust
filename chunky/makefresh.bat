@@ -1,1 +1,0 @@
-call kick transition\transition.asm -o transition\transition.prg

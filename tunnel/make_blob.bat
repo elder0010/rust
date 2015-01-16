@@ -1,1 +1,3 @@
-java -jar c:\kick\KickAss.jar c:\kick\rust\Elder\tunnel\blobbed_data.asm -o c:\kick\rust\Elder\tunnel\blob.prg
+@ECHO OFF
+SET BIN="..\bin"
+java -jar %BIN%\KickAss.jar blobbed_data.asm -o blob.prg

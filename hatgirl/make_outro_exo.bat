@@ -1,3 +1,5 @@
+@ECHO OFF
+SET BIN="..\bin"
 call make_outro.bat
-c:\kick\exomizer level c:\kick\rust\Elder\hatgirl\outro.prg -o c:\kick\rust\Elder\hatgirl\hatout.prg
+%BIN%\exomizer level outro.prg -o hatout.prg
 del outro.prg

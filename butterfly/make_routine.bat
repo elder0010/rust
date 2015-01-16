@@ -1,1 +1,3 @@
-java -jar c:\kick\KickAss.jar c:\kick\rust\Elder\butterfly\butterfly_routine.asm -o c:\kick\rust\Elder\butterfly\butterfly_routine.prg
+@ECHO OFF
+SET BIN="..\bin"
+java -jar %BIN%\KickAss.jar butterfly_routine.asm -o butterfly_routine.prg

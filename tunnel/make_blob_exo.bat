@@ -1,4 +1,6 @@
-call c:\kick\rust\Elder\tunnel\make_blob.bat
-c:\kick\exomizer level -c c:\kick\rust\Elder\tunnel\blob.prg -o c:\kick\rust\Elder\tunnel\tbl.prg
-del c:\kick\rust\Elder\tunnel\blob.prg
-del c:\kick\rust\Elder\tunnel\blob.sym
+@ECHO OFF
+SET BIN="..\bin"
+call make_blob.bat
+%BIN%\exomizer level -c blob.prg -o tbl.prg
+del blob.prg
+del blob.sym

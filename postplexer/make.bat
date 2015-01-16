@@ -1,1 +1,3 @@
-java -jar c:\kick\KickAss.jar c:\kick\rust\Elder\postplexer\fastplex.asm -o c:\kick\rust\Elder\postplexer\fastplex.prg
+@ECHO OFF
+SET BIN="..\bin"
+java -jar %BIN%\KickAss.jar fastplex.asm -o fastplex.prg

@@ -1,2 +1,4 @@
-call c:\kick\rust\Elder\tunnel\make.bat
-c:\kick\exomizer sfx $9400 c:\kick\rust\Elder\tunnel\tunnel.prg -o c:\kick\rust\Elder\tunnel\spiralexo.prg
+@ECHO OFF
+SET BIN="..\bin"
+call make.bat
+%BIN%\exomizer sfx $9400 tunnel.prg -o spiralexo.prg

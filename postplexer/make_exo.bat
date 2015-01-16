@@ -1,2 +1,4 @@
-call c:\kick\rust\Elder\postplexer\make.bat
-c:\kick\exomizer level  c:\kick\rust\Elder\postplexer\fastplex.prg -o c:\kick\rust\Elder\postplexer\fast.prg
+@ECHO OFF
+SET BIN="..\bin"
+call make.bat
+%BIN%\exomizer level  fastplex.prg -o fast.prg

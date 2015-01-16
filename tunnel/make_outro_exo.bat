@@ -1,3 +1,5 @@
-call c:\kick\rust\Elder\tunnel\make_outro.bat
-c:\kick\exomizer level c:\kick\rust\Elder\tunnel\outro.prg -o c:\kick\rust\Elder\tunnel\oun.prg
-del c:\kick\rust\Elder\tunnel\outro.prg
+@ECHO OFF
+SET BIN="..\bin"
+call make_outro.bat
+%BIN%\exomizer level outro.prg -o oun.prg
+del outro.prg

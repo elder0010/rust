@@ -1,2 +1,4 @@
-call c:\kick\rust\Elder\hatgirl\make.bat
-c:\kick\exomizer level c:\kick\rust\Elder\hatgirl\hatgirl.prg -o c:\kick\rust\Elder\hatgirl\hat.prg
+@ECHO OFF
+SET BIN="..\bin"
+call make.bat
+%BIN%\exomizer level hatgirl.prg -o hat.prg

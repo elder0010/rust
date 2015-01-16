@@ -1,2 +1,3 @@
-
-c:\kick\exomizer sfx $7900 c:\kick\rust\Elder\butterfly\butterfly.prg -o c:\kick\rust\Elder\butterfly\farfalla_exo.prg
+@ECHO OFF
+SET BIN="..\bin"
+%BIN%\exomizer sfx $7900 butterfly.prg -o farfalla_exo.prg

@@ -1,1 +1,3 @@
-java -jar c:\kick\KickAss.jar c:\kick\rust\Elder\clock\transition.asm -o c:\kick\rust\Elder\clock\transition.prg
+@ECHO OFF
+SET BIN="..\bin"
+java -jar %BIN%\KickAss.jar transition.asm -o transition.prg

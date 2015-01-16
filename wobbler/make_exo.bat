@@ -1,2 +1,4 @@
-java -jar c:\kick\KickAss.jar c:\kick\rust\Elder\wobbler\plex_test.asm -o c:\kick\rust\Elder\wobbler\plex_test.prg
-c:\kick\exomizer level c:\kick\rust\Elder\wobbler\plex_test.prg -o c:\kick\rust\Elder\wobbler\plexer.prg
+@ECHO OFF
+SET BIN="..\bin"
+java -jar %BIN%\KickAss.jar plex_test.asm -o plex_test.prg
+%BIN%\exomizer level plex_test.prg -o plexer.prg

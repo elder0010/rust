@@ -1,1 +1,3 @@
-java -jar c:\kick\KickAss.jar c:\kick\rust\Elder\minifader\minifader.asm -o c:\kick\rust\Elder\minifader\minifader.prg
+@ECHO OFF
+SET BIN="..\bin"
+java -jar %BIN%\KickAss.jar minifader.asm -o minifader.prg

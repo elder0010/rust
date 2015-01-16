@@ -1,2 +1,4 @@
- java -jar c:\kick\KickAss.jar c:\kick\rust\Elder\purpletransition\purpletransition.asm -o c:\kick\rust\Elder\purpletransition\purpletransition.prg
- c:\kick\exomizer sfx $9800 c:\kick\rust\Elder\purpletransition\purpletransition.prg -o c:\kick\rust\Elder\purpletransition\purple_exo.prg
+@ECHO OFF
+SET BIN="..\bin"
+java -jar %BIN%\KickAss.jar ..\purpletransition\purpletransition.asm -o ..\purpletransition\purpletransition.prg
+%BIN%\exomizer sfx $9800 ..\purpletransition\purpletransition.prg -o ..\purpletransition\purple_exo.prg
