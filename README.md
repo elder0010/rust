@@ -19,7 +19,10 @@ To compile the whole demo, simply use the included make procedure:
 ```
 make_demo.bat
 ```
-
+Each scene has an internal "make" command to compile it 
+```
+make.bat
+```
 ### Todo's
 - Translate all comments to English
 - Makefile for Linux / OSX
