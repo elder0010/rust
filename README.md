@@ -19,7 +19,7 @@ To compile the whole demo, simply use the included make procedure:
 ```
 make_demo.bat
 ```
-Each scene folder has an internal "make" command to compile it. for example:
+Each scene folder has an internal "make" command to compile it. For example:
 ```
 postplexer\make.bat
 ```
