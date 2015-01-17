@@ -30,13 +30,16 @@ make.bat
 ### Credits
 - Elder0010 - Code
 - Freshness - Code
-- Psycho8580/Onslaught - Music
+- Psycho8580- Music
 - CONS - Graphics
 - AlmightyGod - Graphics
 - Raina - Graphics
 - Adam - Graphics
 
+### External links
+
 **Free Software, Hell Yeah!**
 
 [Kick Assembler]:http://www.theweb.dk/KickAssembler/Main.php
 [Java]:http://java.com/en/download/index.jsp
+[Rust on CSDB]:http://csdb.dk/release/?id=125612
