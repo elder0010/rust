@@ -48,4 +48,4 @@ The make_demo.bat creates a working copy of the program, but the directory art w
 [Kick Assembler]:http://www.theweb.dk/KickAssembler/Main.php
 [Java]:http://java.com/en/download/index.jsp
 [Rust on CSDB]:http://csdb.dk/release/?id=125612
-[Onslaught Homepage]:http://www.atlantis-prophecy.org/onslaught/
+[Onslaught Homepage]:http://www.atlantis-prophecy.org/onslaught
