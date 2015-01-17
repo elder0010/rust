@@ -19,9 +19,9 @@ To compile the whole demo, simply use the included make procedure:
 ```
 make_demo.bat
 ```
-Each scene has an internal "make" command to compile it 
+Each scene folder has an internal "make" command to compile it. for example:
 ```
-make.bat
+postplexer\make.bat
 ```
 ### Todo's
 - Translate all comments to English
@@ -37,13 +37,15 @@ make.bat
 - Adam - Graphics
 
 ### Notes
-The make_demo.bat creates a working copy of the program, but the directory art will not be automatically added to the .d64: you will need to do this manually. You will find the directory_art.d64 to use in the \bin folder
+The make_demo.bat creates a working copy of the program, but the directory art will not be automatically added to the .d64: you will need to do this manually. You will find the directory_art.d64 to use in the \bin folder.
 
 ### External links
 [Rust on CSDB]
+[Onslaught Homepage]
 
 **Free Software, Hell Yeah!**
 
 [Kick Assembler]:http://www.theweb.dk/KickAssembler/Main.php
 [Java]:http://java.com/en/download/index.jsp
 [Rust on CSDB]:http://csdb.dk/release/?id=125612
+[Onslaught Homepage]:http://www.atlantis-prophecy.org/onslaught/
