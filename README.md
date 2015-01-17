@@ -40,8 +40,8 @@ postplexer\make.bat
 The make_demo.bat creates a working copy of the program, but the directory art will not be automatically added to the .d64: you will need to do this manually. You will find the directory_art.d64 to use in the \bin folder.
 
 ### External links
-[Rust on CSDB]
-[Onslaught Homepage]
+-[Rust on CSDB]
+-[Onslaught Homepage]
 
 **Free Software, Hell Yeah!**
 
