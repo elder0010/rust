@@ -10,8 +10,11 @@ set MAKEALL=1
 del %BUILDPATH%\rust.d64
 %BINPATH%\cc1541 -S 10 -n "RUST" %BUILDPATH%\rust.d64 -i "ONS"
 
-%BINPATH%\c1541.exe %BUILDPATH%\rust.d64 -attach %BUILDPATH%\rust.d64 -write temp\loader.prg rust
-%BINPATH%\c1541.exe %BUILDPATH%\rust.d64 -attach %BUILDPATH%\rust.d64 -write temp\in.prg 01
+call %BINPATH%\inmake.bat manager make_exo.bat
+%BINPATH%\c1541.exe %BUILDPATH%\rust.d64 -attach %BUILDPATH%\rust.d64 -write manager\loader.prg rust
+
+call %BINPATH%\inmake.bat roller make_exo.bat
+%BINPATH%\c1541.exe %BUILDPATH%\rust.d64 -attach %BUILDPATH%\rust.d64 -write roller\in.prg 01
 
 call %BINPATH%\inmake.bat tentacoli make_exo.bat
 %BINPATH%\c1541.exe %BUILDPATH%\rust.d64 -attach %BUILDPATH%\rust.d64 -write tentacoli\txo.prg 02
@@ -65,15 +68,19 @@ call %BINPATH%\inmake.bat tunnel make_blob_exo.bat
 call %BINPATH%\inmake.bat tunnel make_intro_exo.bat
 %BINPATH%\c1541.exe %BUILDPATH%\rust.d64 -attach %BUILDPATH%\rust.d64 -write tunnel\itn.prg 19
 
-call %BINPATH%\inmake.bat tunnel make_intro_exo.bat
-%BINPATH%\c1541.exe %BUILDPATH%\rust.d64 -attach %BUILDPATH%\rust.d64 -write temp\oun.prg 20
+call %BINPATH%\inmake.bat tunnel make_outro_exo.bat
+%BINPATH%\c1541.exe %BUILDPATH%\rust.d64 -attach %BUILDPATH%\rust.d64 -write tunnel\oun.prg 20
 
-%BINPATH%\c1541.exe %BUILDPATH%\rust.d64 -attach %BUILDPATH%\rust.d64 -write temp\tw.prg 21
-%BINPATH%\c1541.exe %BUILDPATH%\rust.d64 -attach %BUILDPATH%\rust.d64 -write temp\ro.prg 22
-%BINPATH%\c1541.exe %BUILDPATH%\rust.d64 -attach %BUILDPATH%\rust.d64 -write temp\ms.prg 23
+call %BINPATH%\inmake.bat twister make_exo.bat
+%BINPATH%\c1541.exe %BUILDPATH%\rust.d64 -attach %BUILDPATH%\rust.d64 -write twister\tw.prg 21
+
+call %BINPATH%\inmake.bat rotozoomer make_exo.bat
+%BINPATH%\c1541.exe %BUILDPATH%\rust.d64 -attach %BUILDPATH%\rust.d64 -write rotozoomer\ro.prg 22
+
+call %BINPATH%\inmake.bat endtunerlenc make_exo.bat
+%BINPATH%\c1541.exe %BUILDPATH%\rust.d64 -attach %BUILDPATH%\rust.d64 -write endtunerlenc\ms.prg 23
 
 call %BINPATH%\inmake.bat clock make_exo.bat
 %BINPATH%\c1541.exe %BUILDPATH%\rust.d64 -attach %BUILDPATH%\rust.d64 -write clock\en.prg 24
 
-
-pause
+%BINPATH%\c1541.exe %BUILDPATH%\rust.d64 -attach %BUILDPATH%\rust.d64 -write note\note.prg note

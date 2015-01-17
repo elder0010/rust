@@ -1,0 +1,4 @@
+.label loadtx=$1025
+.label savetx=$102b
+.label maploader=$8000
+.label loop=$101e

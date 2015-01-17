@@ -1,0 +1,3 @@
+.label commandlist=$2000
+.label loadtable=$2064
+.label jumptable=$2030

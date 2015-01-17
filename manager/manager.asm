@@ -3,9 +3,11 @@
 .const	flag=$1f
 .const	initloader=$0e8c
 
-// Scene/Load manager
+.const	jsruio1=	$0B1F 	// call to disable_io
+.const	jsruio2=	$0B28	// call to enable_io
 
-.pc=$840
+// Scene/Load manager
+.pc=$814
 	sei
 	lda #<fakeirq
 	sta $fffe
@@ -37,6 +39,7 @@ nextcommand:
 !:	
 	tsx
 	stx savestack
+	tax
 	asl command
 	bcc skipjump		// JUMP
 	jmp cmdjump
@@ -51,7 +54,7 @@ skipload:
 skipcall:
 	asl command
 	bcc skipldst		// LOAD (with flags)
-	jmp cmdcall	
+	jmp cmdloadwait	
 skipldst:
 	jmp nextcommand
 
@@ -89,12 +92,26 @@ retadd:
 // LOAD
 // ----
 
+cmdloadwait:
+	lda #$00
+	.byte BIT_ABS
 cmdload:
+	lda #$80
+	sta flag
+	txa
+	lsr
+	bcc !+
+	jsr notloadunderio
+!:
     ldx filename
 	ldy filename+1	
 	jsr load
+	jsr loadunderio
 	jsr nextfile
-	jmp skipload
+!:
+	bit flag
+	bpl !-
+	jmp nextcommand
 	
 // CALL
 // ----
@@ -113,6 +130,11 @@ cmdcall:
 // ---------------
 
 cmdldst:
+	txa
+	lsr
+	bcc !+
+	jsr notloadunderio
+!:
 	sei	
 	lda #$01
 	sta flag
@@ -120,6 +142,7 @@ cmdldst:
     ldx filename
 	ldy filename+1	
 	jsr load
+	jsr loadunderio
 	jsr nextfile
 	sei
 	eor #$41
@@ -204,6 +227,9 @@ waitjump:
 sidplayer:
 	stx spret+1
 	sty spret+2
+	lda #0
+//	Reset SID
+	jsr sidreset
 	jsr $1000
 	lda #<sidirq
 	sta irq	
@@ -212,9 +238,21 @@ sidplayer:
 spret:
 	jmp $0000
 
+
+sidreset:
+	ldx #[$80-$18]
+!:
+	lda #$ff
+	sta $d400+$18-$80,x
+	lda #$00
+	sta $d400+$18-$80,x
+	inx
+	bpl !-
+	rts
+	
+
 // SID IRQ player
 // **************	
-
 sidirq:
 	pha
 	txa
@@ -229,7 +267,8 @@ sidirq:
 	tax
 	pla
 	rti
-	
+
+
 
 // Fake IRQ handler
 // ****************
@@ -258,6 +297,22 @@ kernirq:
 	pla
 	rti
 	
+// Disable/Enable under-IO loader
+// ******************************
+	
+notloadunderio:
+	lda #BIT_ABS
+	sta jsruio1
+	sta jsruio2
+	rts
+
+loadunderio:
+	lda #JSR_ABS
+	sta jsruio1
+	sta jsruio2
+	rts	
+	
+	
 // Generic variables
 // -----------------
 
@@ -278,17 +333,22 @@ command:
 savestack:
 .byte	$00
 
-.import source "conf.asm"
+.import source "confparser.asm"
+
 
 .pc=2730
 load:
 .import c64 "loader.prg"
 
+
+
 // Configuration macros
 // ********************
+
 
 .macro addr(y) {
 .byte	<y,>y
 }
 .pc=$1000
 .import c64 "check.prg"
+

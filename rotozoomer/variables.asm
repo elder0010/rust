@@ -1,48 +1,102 @@
+.const SIZEX=48		// 48
+.const SIZEY=46		// 46
+.const XOFFSET=8	// 8
+.const YOFFSET=2	// 4
+
+
+// Tabelle dei quadrati
+.const square1_lo=	$7800		// Computed rt
+.const square1_hi=	$7A00		// Computed rt
+.const square2_lo=	$7C00		// Computed rt
+.const square2_hi=	$7E00		// Computed rt
+
+
 //;---CHUNKY VARIABLES--------------
 .var RasterRow = $1d //; May not be a line with sprites or a badline
-.var _rx = $a3
-.var _ry = $a4
-.var _pageflip = $e4
 
-.var oldCIA = $b6
+.var _rx = $40
+.var _ry = $41
 
+.var oldCIA = $4a
 
-//;--MATH FUNCTIONS VARIABLES------------
-.var T1 = $30
-.var T2 = $32
-.var PRODUCT = $36
+// Chunky test
+// ***********
 
+.const	stopchunky	=	$38	// 1 byte
+.const	flippage	=	$31	// 1 byte
+.const	stopstatus	=	$39	// 1 byte
 
-//;puntatori per ruotare
-.var u_lo = $40
-.var u_hi = $43
-.var v_lo = $54
-.var v_hi = $56
+// Temp incx
+// *********
+.const	tmpxuhi2	=	$3d
+.const	tmpxulo		=	$3e
+.const	tmpxuhi		=	$3f
 
+// Frame counters
+.const	fcl			=	$43
+.const	fch			=	$44
 
-.var incx_ulo = $41
-.var incx_uhi = $44
-.var incx_vlo = $45
-.var incx_vhi = $45
+//; Calcolo square table
+.const	clo			=	$45
+.const	cmi			=	$46
+.const	chi			=	$47
+.const	lo			=	$48
+.const	mi			=	$49
+.const	hi			=	$4a
+.const	oddlo		=	$4b
+.const	oddmi		=	$4c
+.const	oddhi		=	$4d
 
-.var incy_ulo = $58
-.var incy_uhi = $59
-.var incy_vlo = $55
-.var incy_vhi = $57
+//; Miscellanea
+.const	zoom		=	$4e
+.const	flipdata	=	$4f
 
-.var tmp_1 = $60
+//; Variabili di incremento (16 bit)
+.const	incxulo	=	$50
+.const	incxuhi	=	$51
+.const	incxvlo	=	$52
+.const	incxvhi	=	$53
+.const	incyulo	=	$54
+.const	incyuhi	=	$55
+.const	incyvlo	=	$56
+.const	incyvhi	=	$57
 
-.var store_u_lo = $61
-.var store_u_hi = $62
-.var store_v_lo = $63
-.var store_v_hi = $64
-.var row_count = $65
+//; Contatore righe
+.const	rowcounter	=	$5e
 
+// Temporaneo per le moltiplicazioni
+.const	T1			=	$5f
 
-.var zoom_sin_pt = $66
-.var roto_sin_pt_1 = $67
-.var roto_sin_pt_2 = $68
+// Vettori traslati (16 bit)
+.const	ulo		=	$60
+.const	uhi		=	$61
+.const	vlo		=	$62
+.const	vhi		=	$63
+.const	yulo	=	$64
+.const	yuhi	=	$65
+.const	yvlo	=	$66
+.const	yvhi	=	$67
 
-.var counter = $69 
+// Angoli
+.const	angle1	=	$68
+.const	angle2	=	$69
+.const	angle3	=	$6a
+.const	zoompos	=	$6b
+.const	movepos	=	$6c
 
- 
+// Contatori
+.const	counter2=	$6d
+.const	counter3=	$6e
+.const	endpart	=	$6f
+.const	nextscenecounter	=	$70
+
+// Savers
+
+.const	bgcol	=	$71	//  Bg colors
+
+//; Puntatori vari (2 byte)
+.const	left	=	$72
+.const	right	=	$74
+.const	ptr		=	$76
+.const	divval	=	$78
+.const	cmpval	=	$79
