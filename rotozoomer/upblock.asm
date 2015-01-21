@@ -17,9 +17,7 @@ imagefile:
 .eval colorMap.add($acea88)
 .eval colorMap.add($7c70da)
 .eval colorMap.add($ababab)  
-//.var image = LoadPicture("images\sonic64x64.png")
 .var image = LoadPicture("images\butterflyck.png")
-//.var image = LoadPicture("images\d2.png")
  .for (var y=0; y < 64 ;  y++) {
     .for (var x=0; x < 64 ; x=x+2) {
         .var color = image.getPixel(x,y)	

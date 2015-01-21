@@ -1,13 +1,13 @@
 @echo off
-echo *************
-echo * -> LOADER *
-echo *************
+echo **********
+echo * LOADER *
+echo **********
 set "BIN=..\bin"
 del loader.prg
 %BIN%\dasm loader.s
 ren a.prg loader.prg
 cd openercheck
-java -jar ..\%BIN%\KickAss.jar mod.asm -o mod.prg
+java -jar ..\\%BIN%\KickAss.jar mod.asm -o mod.prg
 del check.prg
 ren mod.prg check.prg
 copy check.prg .. /Y

@@ -105,7 +105,7 @@
 
 .if (TEST_MODE==1) :BasicUpstart2(start)
 
-.var sid=LoadSid("psycho.sid")
+.var sid=LoadSid("..\SID\psycho.sid")
 
 .if (TEST_MODE==1) {
 	.pc=sid.location "Rust by psicho (SID)"

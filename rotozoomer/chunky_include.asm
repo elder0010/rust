@@ -378,8 +378,8 @@ v2even:
 	jmp $dd0c	// 3 + 7 (RTI) => 97
 
 .pc=$75a0	"Import fader"
-.import source "..\rotofader\fade.sym"
-.import c64 "..\rotofader\fade.prg"
+.import source "fade.sym"
+.import c64 "fade.prg"
 .import source "upblock.asm"	
 	
 	

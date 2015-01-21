@@ -1,21 +1,18 @@
-.var TEST_MODE=0
-.var music = LoadSid("intro.sid")
+.var	TEST_MODE
+.if (cmdLineVars.get("test")==null) .eval TEST_MODE=false
+							   else .eval TEST_MODE=cmdLineVars.get("test").asBoolean()
+							   
+.var music = LoadSid("..\SID\intro.sid")
 
 .import source "variables.asm"
 .import source "../common/functions.asm"
 .import source "transition.sym"
 
-.if (TEST_MODE == 1){	
+.if (TEST_MODE){	
 	:BasicUpstart2(clock_scene_start)
 	.pc=music.location "Music" .fill music.size, music.getData(i)
 }
 
-
-
-/*
-.pc = $8000
-.import source "data/sin_x.asm"
-*/
 
 
 .pc = $2800 "freshness scrolling machine"
@@ -48,7 +45,7 @@
 
 .pc = $3300 "scene start"
 clock_scene_start:
-.if (TEST_MODE == 1){
+.if (TEST_MODE){
 		sei
 		lda #0
 		jsr music.init
@@ -80,7 +77,7 @@ clock_scene_start:
 
 		lda #$33
 		sta d011val
-
+		
 		jsr display_bitmap
 	
 		lda #$d8
@@ -93,17 +90,15 @@ clock_scene_start:
 
 		:d012($fa)
 		:set_irq(msx_sync_irq)
-
-
-		//;:set_irq(prova_irq)
-
-.if(TEST_MODE==1){
+				
+.if(TEST_MODE) {
+		lsr $d019
 		cli
 }
 
 can_scroll:
-		lda #0
-		beq can_scroll
+		lda #0		
+		beq can_scroll		
 		jsr start //;jsr to scroll routine
 		jmp *
 
@@ -153,10 +148,11 @@ end_irq:
 
 msx_sync_irq:
 		:open_irq()
-		asl $d019
+		asl $d019		
 		lda $1731
-		cmp #$86
-		bne !+
+		cmp #$86		
+		.if (TEST_MODE) lda #$00
+		bne !+		
 		:set_irq(fld_bottom_irq)
 !:	
 		jsr wob_pic_x
@@ -173,9 +169,8 @@ msx_sync_irq:
 .pc = $6800
 .import	source "fresh/text.asm"
 
-/*
-.align $40
-.pc = * "bubble sprite"
-bubble_sprite_cl:
-.import binary "data/bubble_sprite.raw"
-*/
+
+.if (TEST_MODE) {
+	.pc = $7ea0 "bubble sprite"
+	.import c64 "transition.prg"
+}

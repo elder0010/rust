@@ -38,7 +38,7 @@
 .var colscreen		=	$d800
 
 
-.var sid=LoadSid("psycho.sid")
+.var sid=LoadSid("..\SID\psycho.sid")
 
 .if (TEST_MODE==1) {
 	.pc=sid.location "Rust by psicho (SID)"
@@ -319,5 +319,5 @@ fadetowhite:
 
 .if (TEST_MODE==1) {
 .pc=$4000
-.import c64 "frame.kla"
+.import c64 "Frame\frame.kla"
 }

@@ -89,7 +89,7 @@
 .var	d018val2		=	floor([videobuffer2&$3fff]/$40)|floor([bitmap&$3fff]/$0400)
 .var	spritenumber	=	usedsprites.size()		// Sprite number
 
-.var sid = LoadSid("psycho.sid")
+.var sid = LoadSid("..\..\SID\psycho.sid")
 
 /*
 .if (TEST_MODE2==1) {

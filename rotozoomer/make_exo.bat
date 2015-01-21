@@ -1,8 +1,8 @@
 @echo off
-echo *****************
-echo * -> ROTOZOOMER *
-echo *****************
+echo ************
+echo * EXOMIZER *
+echo ************
 set "BIN=..\bin"
-java -jar %BIN%\KickAss.jar rotozoomer.asm -o rotozoomer.prg -symbolfile -vicesymbols
+call make.bat
 %BIN%\exomizer level -c rotozoomer.prg -o ro.prg
 

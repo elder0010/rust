@@ -31,7 +31,7 @@
 // Rotozoomer
 // **********
 
-.var sid = LoadSid("psycho.sid")
+.var sid = LoadSid("..\SID\psycho.sid")
 
 .if (TEST_MODE == 1){	
 	.pc=sid.location "Music" .fill sid.size, sid.getData(i)

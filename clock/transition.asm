@@ -1,5 +1,6 @@
-.var TEST_MODE=0
-
+.var	TEST_MODE
+.if (cmdLineVars.get("test")==null) .eval TEST_MODE=false
+							   else .eval TEST_MODE=cmdLineVars.get("test").asBoolean()
 
 .const accu = $89
 .var SPEED = $8a
@@ -12,8 +13,8 @@
 
 .import source "../common/functions.asm"
 
-.if (TEST_MODE == 1){	
-	.var music = LoadSid("intro.sid")
+.if (TEST_MODE){	
+	.var music = LoadSid("..\SID\intro.sid")
 	:BasicUpstart2(scene_start)
 	.pc=music.location "Music" .fill music.size, music.getData(i)
 }
@@ -25,7 +26,7 @@ bubble_sprite:
 
 .pc = $7ea0 "scene start"
 scene_start:
-.if (TEST_MODE == 1){
+.if (TEST_MODE){
 		sei
 		lda #0
 		jsr $1000
@@ -61,7 +62,7 @@ scene_start:
 		:d012($fa)
 		:set_irq(irq)
 
-.if(TEST_MODE==1){
+.if(TEST_MODE){
 		cli
 		jmp *
 }
