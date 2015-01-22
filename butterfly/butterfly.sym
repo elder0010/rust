@@ -1,129 +1,129 @@
-.label internal_wob_pt=$a164
-.label INTRO=$a05b
-.label switch_top_irq=$a0e3 {
-}
-.label clear_screen_sprites=$7c70
-.label start_irq_top=$9ec2 {
-}
-.label fade_butterfly=$7cbb
-.label move_irqs=$a02a
-.label frame_count=$a4c6
-.label finished_reloc=$9e71
-.label switch_bottom_irq=$a10f {
-}
-.label irq_1=$9f52 {
-}
-.label calcola_fld=$a490
-.label outro_irq_msx=$286e {
-}
-.label open_border_irq=$a13e {
-}
-.label bg_irq=$7bb9 {
-}
-.label cangoscene=$9e3c
-.label intro_wob_pt=$a163
-.label open_bar=$a166
-.label blinker_not_finished=$9d2f
-.label tetris_assets=$2900
-.label puntatori_reverse=$9b00
-.label wtr=$9e48
 .label music_irq=$a453 {
 }
-.label skull_chars_src=$2b00
-.label msx_irq_r=$7ad2
-.label fld_first_line=$a420
-.label scene_state=$a165
-.label lower_bt_col=$7a23
-.label nofd=$9e3c
-.label sine_x=$923f
-.label sine_y=$913f
-.label close_range=$a052
-.label screen_table=$9e72
-.label skip_btr=$a01e
-.label skipfld=$a44d {
-}
-.label open_range=$a05f
-.label code=$9d00
-.label puntatori_wob=$7cfb
 .label fade_table_btn=$7caf
-.label outro_irq_bottom=$282a {
-}
-.label sprites_reverse_source=$9400
-.label start_irq_center=$9eee {
-}
-.label nx_irq_line=$2810
-.label waster_irq=$9e25 {
-}
-.label puntatori=$7ce5
-.label go_add_wob=$a065
-.label upper_bt_col=$7b3d
-.label nogo=$7cc0
-.label sequenza_pezzi=$2900
-.label sprites_y=$7cec
-.label spessore_1=$a037
-.label spessore_2=$a067
+.label nofd=$9e3c
+.label close_bar=$a172
+.label reflex_irq_line=$7a0d
+.label open_range=$a05f
 .label line_cl=$9f8e
-.label fade_table=$7ca5
+.label msx_irq_r=$7ad2
+.label ctt=$a4a1
 .label outro_irq_top=$2800 {
 }
-.label ctt=$a4a1
-.label skipall=$9e6b {
+.label skull_chars_src=$2b00
+.label open_border_irq=$a13e {
 }
-.label nod=$7c36
-.label intro_sine=$a200
-.label fade_chk=$7cdc
-.label mega_reloc=$a4d2
-.label sprites_y_reverse=$9b07
-.label fade_ptr=$7cb9
-.label mini_raster_fade_table=$a180
 .label delay=$9e43
-.label fld_loop=$a427
-.label raster1=$7994
-.label raster2=$7af2
-.label lower_fix_col=$7aba
-.label fade_dir=$7cd9
-.label SCENE=$a044
-.label mini_fd_pt=$a186
-.label start_offsets=$2a00
-.label new_irq=$7a54
-.label msx_irq=$7a03
-.label calc_x_sprites=$7c1c
-.label d010_mask=$7c68
-.label OUTRO=$a04a
-.label nmi=$9da0
-.label cover_sprite_2_x=$7a4a
-.label cover_sprite_2_y=$7a4f
-.label recalc=$a072
-.label top_irq=$a400 {
+.label switch_bottom_irq=$a10f {
 }
-.label must_fade_butterfly=$7ca4
-.label new_irq_r=$7ae1
-.label ciao=$a09f
-.label skip=$7a1c
-.label final_irq=$2898 {
-}
-.label final_check=$7b88
-.label fade_delay=$7cba
-.label secondary_wob=$a300
-.label reflex_irq_line=$7a0d
-.label reflection_irq=$7a5a
-.label go_to_butterfly=$a007
-.label sprites_wob_y=$7cf3
-.label wait_reloc_irq=$9ea2 {
-}
-.label calc_y_sprites=$7bde
-.label close_bar=$a172
-.label bg_1=$7a65
-.label sprites_source=$8500
-.label giri_f=$7b6d
-.label place_sprites=$7d17
-.label bg_2=$7a68
 .label cover_sprite_1_x=$799c
 .label cover_sprite_1_y=$79a1
-.label okfd=$7cc2
+.label skipall=$9e6b {
+}
+.label intro_wob_pt=$a163
+.label skip_btr=$a01e
+.label internal_wob_pt=$a164
+.label blinker_not_finished=$9d2f
+.label lower_fix_col=$7aba
+.label screen_table=$9e72
+.label nogo=$7cc0
+.label INTRO=$a05b
+.label sprites_source=$8500
+.label top_irq=$a400 {
+}
+.label puntatori=$7ce5
+.label intro_sine=$a200
+.label cover_sprite_2_y=$7a4f
+.label nx_irq_line=$2810
+.label cover_sprite_2_x=$7a4a
+.label bg_irq=$7bb9 {
+}
+.label frame_count=$a4c6
+.label nmi=$9da0
+.label close_range=$a052
+.label bg_2=$7a68
+.label bg_1=$7a65
+.label start_offsets=$2a00
+.label new_irq_r=$7ae1
+.label puntatori_wob=$7cfb
+.label calc_x_sprites=$7c1c
+.label upper_bt_col=$7b3d
 .label rt_c_0=$9f6a
+.label nod=$7c36
+.label raster2=$7af2
+.label go_add_wob=$a065
+.label raster1=$7994
+.label rt_c_3=$9fa9
+.label rt_c_2=$9f93
+.label rt_c_1=$9f7d
 .label intro_msx_irq=$9fe1 {
 }
-.label rt_c_3=$9fa9
-.label rt_c_1=$9f7d
-.label rt_c_2=$9f93
+.label SCENE=$a044
+.label sprites_y_reverse=$9b07
+.label fade_table=$7ca5
+.label tetris_assets=$2900
+.label fld_first_line=$a420
+.label mini_raster_fade_table=$a180
+.label place_sprites=$7d17
+.label clear_screen_sprites=$7c70
+.label secondary_wob=$a300
+.label fld_loop=$a427
+.label reflection_irq=$7a5a
+.label move_irqs=$a02a
+.label calcola_fld=$a490
+.label waster_irq=$9e25 {
+}
+.label d010_mask=$7c68
+.label fade_dir=$7cd9
+.label final_check=$7b88
+.label final_irq=$2898 {
+}
+.label wtr=$9e48
+.label fade_chk=$7cdc
+.label msx_irq=$7a03
+.label puntatori_reverse=$9b00
+.label finished_reloc=$9e71
+.label new_irq=$7a54
+.label skip=$7a1c
+.label recalc=$a072
+.label sprites_y=$7cec
+.label mini_fd_pt=$a186
+.label bye_endx=$a09f
+.label OUTRO=$a04a
+.label open_bar=$a166
+.label cangoscene=$9e3c
+.label must_fade_butterfly=$7ca4
+.label fade_butterfly=$7cbb
+.label sprites_wob_y=$7cf3
+.label sine_x=$923f
+.label scene_state=$a165
+.label sine_y=$913f
+.label giri_f=$7b6d
+.label skipfld=$a44d {
+}
+.label start_irq_top=$9ec2 {
+}
+.label go_to_butterfly=$a007
+.label mega_reloc=$a4d2
+.label outro_irq_bottom=$282a {
+}
+.label switch_top_irq=$a0e3 {
+}
+.label okfd=$7cc2
+.label lower_bt_col=$7a23
+.label sequenza_pezzi=$2900
+.label code=$9d00
+.label fade_delay=$7cba
+.label spessore_1=$a037
+.label spessore_2=$a067
+.label start_irq_center=$9eee {
+}
+.label calc_y_sprites=$7bde
+.label irq_1=$9f52 {
+}
+.label outro_irq_msx=$286e {
+}
+.label sprites_reverse_source=$9400
+.label wait_reloc_irq=$9ea2 {
+}
+.label fade_ptr=$7cb9

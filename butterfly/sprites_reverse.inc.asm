@@ -72,7 +72,7 @@ puntatori_reverse:
 .byte [sprites_reverse/$40]+[7]*6
 
 .pc = * "sprites y"
-.var reverse_base = $b7 //; $b8
+.var reverse_base = $b7 // $b8
 sprites_y_reverse:
 .byte reverse_base,reverse_base+21,reverse_base+21*2,reverse_base+21*3
 .byte reverse_base+21*4,reverse_base+21*5,reverse_base+21*6

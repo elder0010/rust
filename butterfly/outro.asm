@@ -20,11 +20,13 @@ nx_irq_line:
 
 	lda #<outro_irq_bottom sta $fffe
 	lda #>outro_irq_bottom sta $ffff
+
 	:close_irq()
 	rti
 
 outro_irq_bottom:
 	:open_irq()
+
 	asl $d019
 !:
 	lda $d012
@@ -48,27 +50,25 @@ outro_irq_bottom:
 	lda #<final_irq sta $fffe
 	lda #>final_irq sta $ffff
 !:
-	
+
 	lda #$f9
 	sta $d012
-
-	//;lda #$b //;Mantengo lo schermo spento
-	//;sta $d011
 
 	:close_irq()
 	rti
 
 outro_irq_msx:
 	:open_irq()
+
 	asl $d019
-	
+
 	lda #$0
 	sta $d012
 
 	lda #<outro_irq_top sta $fffe
 	lda #>outro_irq_top sta $ffff
 	:set_addr(scene_finished,scene_wait)
-	
+
 	jsr $1003
 
 	:close_irq()
@@ -76,15 +76,12 @@ outro_irq_msx:
 
 final_irq:
 	:open_irq()
+	
 	asl $d019
 
 	:set_addr(scene_finished,scene_wait)
-	
-	
-	//lda #<scene_finished
-	//sta scene_wait+1
+
 	jsr $1003
-	
 
 	:close_irq()
 	rti

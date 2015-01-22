@@ -1,9 +1,7 @@
-//.var sprites_reverse_source = $9400
-//.var sprites_source = $8500
-
 mega_reloc:
-		jsr tetris_assets+$a10 //;$3310 - reloc routine della roba tetris
-		//;Riloco gli sprites reverse
+		jsr tetris_assets+$a10 //$3310 - reloc routine della roba tetris
+
+		//Riloco gli sprites reverse
 		ldx #0
 !:
 		lda sprites_reverse_source,x
@@ -29,9 +27,9 @@ mega_reloc:
 
 		dex
 		bne !-
-		
+
 		ldx #0
-		//;Riloco gli sprites dritti
+		//Riloco gli sprites dritti
 !:
 		lda sprites_source,x
 		sta sprites,x
@@ -69,14 +67,13 @@ mega_reloc:
 		lda sprites_source+$b00,x
 		sta sprites+$b00,x
 
-
 		lda sprites_source+$b00+$3e,x
 		sta sprites+$b00+$3e,x
 
 		dex
 		bne !-
 
-		//;creo il filler sprite
+		//creo il filler sprite
 		lda #$ff
 		ldx #$40
 !:

@@ -5,10 +5,9 @@ waster_irq:
 		jsr frame_count
 		asl $d019
 
-
 		lda frame_count_lo
 .pc = * "FRAME DELAY"
-		cmp #$52 //;delay per messa a sync
+		cmp #$52 //delay per messa a sync
 		bne nofd
 		inc cangoscene+1
 nofd:
@@ -16,7 +15,7 @@ nofd:
 cangoscene:
 		lda #0
 		beq skipall
-	
+
 		inc delay+1
 delay:
 		ldx #0
@@ -30,14 +29,10 @@ wtr:
 		cpx #31
 
 		bne !+
-
 		inc blinker_not_finished+1
 
 		lda #$0
 		sta $d011
-
-	//	lda #$0
-	//	sta $d012
 
 		lda #<wait_reloc_irq sta $fffe
 		lda #>wait_reloc_irq sta $ffff
@@ -45,6 +40,7 @@ wtr:
 skipall:
 		:close_irq()
 		rti
+
 finished_reloc:
 .byte $0
 
@@ -68,20 +64,17 @@ wait_reloc_irq:
 		beq !+
 		lda #<start_irq_top sta $fffe
 		lda #>start_irq_top sta $ffff
-
-	//	lda #0
-	//	sta $d012
 !:
 		jsr $1003
 
 		:close_irq()
 		rti
 
-//;----------------------------------------------
-//;Set di irq per aprire la scena
+//----------------------------------------------
+//Set di irq per aprire la scena
 start_irq_top:
 		:open_irq()
-		
+
 		asl $d019
 
 		lda #IRQ_1_COL
@@ -108,7 +101,7 @@ start_irq_center:
 
 		asl $d019
 		lda #<start_irq_top sta $fffe
-		lda #>start_irq_top sta $ffff		
+		lda #>start_irq_top sta $ffff
 
 		lda #$00
 		sta $d012
@@ -125,7 +118,7 @@ start_irq_center:
 		bcs !-
 !:
 .pc = * "DELAYER"
-		ldy #7 //;10
+		ldy #7 //10
 		:wait()
 		bit $24
 
@@ -154,14 +147,11 @@ start_irq_center:
 		:close_irq()
 		rti
 
-
-//;----------------------------------------------
+//----------------------------------------------
 
 irq_1:
 		:open_irq()
 
-	//;))	:stable_raster()
-	
 		lda #IRQ_1_COL
 		sta $d020
 
@@ -173,6 +163,7 @@ irq_1:
 		ldy #9
 		:wait()
 		bit $24
+
 rt_c_0:
 		lda #IRQ_2_COL
 		sta $d020
@@ -183,14 +174,14 @@ rt_c_0:
 		bne !-
 
 		bit $24
-
 		ldy #9
 		:wait()
+
 rt_c_1:
 		lda #IRQ_3_COL
 		sta $d020
-//;--------------------------------------------------------------------
-//;WOB ZONE
+//--------------------------------------------------------------------
+//WOB ZONE
 !:
 		lda $d012
 		cmp wob_1_line
@@ -200,16 +191,15 @@ rt_c_1:
 		:wait()
 
 line_cl:
-		lda #WOB_LINE_COL 
+		lda #WOB_LINE_COL
 		sta $d020
 rt_c_2:
 		ldx #WOB_ZONE_1_COL
 		ldy #11
 		:wait()
 
-		
 		stx $d020
-//;---------------------------------------------------------------------
+//---------------------------------------------------------------------
 !:
 		lda $d012
 		cmp irq_4_line
@@ -276,28 +266,20 @@ intro_msx_irq:
 		jmp skip_btr
 
 go_to_butterfly:
-/*
-		lda #<raster2 sta $fffe
-		lda #>raster2 sta $ffff
-		
-		lda #$f8
-		sta $d012
-		*/
-
 		lda #$1 sta $d012
 
 		lda #<switch_top_irq sta $fffe
 		lda #>switch_top_irq sta $ffff
 
 		asl $d019
-		
+
 		lda #$0
 		sta $d011
-skip_btr:	
+skip_btr:
 		asl $d019
-	
+
 		jsr $1003
-	
+
 		:close_irq()
 		rti
 
@@ -307,48 +289,42 @@ move_irqs:
 
 		ldx intro_wob_pt
 		lda intro_sine,x
-		//lda #$92
-
 		sta irq_2_line
 
 		clc
 spessore_1:
-		adc #2 //;SPESSORE LINEA NERA SUPERIORE
-		//lda #$a4
+		adc #2 //SPESSORE LINEA NERA SUPERIORE
 		sta irq_3_line
-		
-		ldy scene_state //;0 intro 1 scena 2 end
+
+		ldy scene_state //0 intro 1 scena 2 end
 		beq INTRO
-		cpy #1 
+		cpy #1
 		bne OUTRO
-//;----------------------------------------------------
+//----------------------------------------------------
 SCENE:
 		adc secondary_wob,x
-		//:manage_scene()
 		jmp go_add_wob
-//;----------------------------------------------------
-OUTRO:	
+//----------------------------------------------------
+OUTRO:
 		cpy #4
 		bne !+
-		//jmp end_scene
 !:
 		jsr close_bar
 		sec
-close_range:		
+close_range:
 		sbc #0
-		clc 
+		clc
 		adc secondary_wob,x
 		jmp go_add_wob
-//;----------------------------------------------------
+//----------------------------------------------------
 INTRO:
 		jsr open_bar
 		sec
 open_range:
-		sbc #58 //;48
+		sbc #58 //48
 		clc
 		adc secondary_wob,x
-		//;adc secondary_wob,x
-go_add_wob:		
+go_add_wob:
 		sta irq_4_line
 spessore_2:
 		adc #2
@@ -360,7 +336,7 @@ spessore_2:
 		sta $57
 
 recalc:
-		//;Ora calcolo la zona di wob
+		//Ora calcolo la zona di wob
 		lda internal_wob_pt
 		sta $56
 		clc
@@ -371,12 +347,12 @@ recalc:
 		cmp $57
 		bcs !+
 		sta wob_1_line
-		jmp ciao
+		jmp bye_endx
 !:
 		lda #0
 		sta internal_wob_pt
-		
-		//;Inverto i colori
+
+		//Inverto i colori
 		lda rt_c_1+1
 		sta $58
 		lda rt_c_2+1
@@ -384,23 +360,22 @@ recalc:
 		lda $58
 		sta rt_c_2+1
 
-		jmp recalc	
-ciao:		
-
+		jmp recalc
+bye_endx:
 		inc intro_wob_pt
 		inc internal_wob_pt
 
 		:manage_scene()
 		rts
 
-//;-------------------------------------------------------------------
-//;Set di interrupt per switchare sulla farfalla
+//-------------------------------------------------------------------
+//Set di interrupt per switchare sulla farfalla
 switch_top_irq:
 		:open_irq()
+
 		asl $d019
 		lda #BG_COLOUR
 		sta $d020
-	//	sta $d021
 
 		lda #0
 		sta $7fff
@@ -415,10 +390,7 @@ switch_top_irq:
 
 		:close_irq()
 		rti
-//.if(TEST_MODE==0){
-//.pc = $7fff "ghost byte"
-//.byte $0
-//}
+
 switch_bottom_irq:
 		:open_irq()
 
@@ -435,9 +407,7 @@ switch_bottom_irq:
 		lda #UNDER_COLOUR
 		sta $d020
 		sta $d021
-		
-		//jsr $1003
-			
+
 		:close_irq()
 		rti
 
@@ -448,7 +418,7 @@ open_border_irq:
 
 		lda #<raster2 sta $fffe
 		lda #>raster2 sta $ffff
-		
+
 		lda #$02
 		sta $d012
 
@@ -456,12 +426,11 @@ open_border_irq:
 		sta $d011
 
 		jsr $1003
-		
+
 		:close_irq()
 		rti
+//--------------------------------------------------------------------
 
-
-//;--------------------------------------------------------------------
 intro_wob_pt:
 .byte $0
 
@@ -471,13 +440,12 @@ internal_wob_pt:
 scene_state:
 .byte $0
 
-
 open_bar:
 		dec open_range+1
 		ldy open_range+1
 		bne !+
 		inc scene_state
-!:	
+!:
 		rts
 
 close_bar:
@@ -486,19 +454,16 @@ close_bar:
 		cpy #86
 		bne !+
 		inc scene_state
-		
-!:	
-
+!:
 		rts
 
 .macro manage_scene(){
-		
 		lda intro_wob_pt
 		cmp #$eb
 		bne !+
 		dec volte+1
 volte:
-		lda #2 //;numero di giri
+		lda #2 //numero di giri
 		bne !+
 		inc scene_state
 !:
@@ -515,7 +480,7 @@ volte:
 		sta rt_c_2+1
 		sta rt_c_3+1
 		inc mini_fd_pt
-		
+
 		lda #1
 		sta spessore_1+1
 		sta spessore_2+1
@@ -529,15 +494,12 @@ mini_raster_fade_table:
 mini_fd_pt:
 .byte $0
 
-.align $100 
+.align $100
 .pc = * "intro sine"
 intro_sine:
 .import source "data/intro_sine.asm"
 
-
 .macro stable_raster(){
-
-		//; give stable raster
 		ldx $d012
 		inx
 		cpx $d012
@@ -551,7 +513,7 @@ intro_sine:
 		beq Time_1
 		nop
 		bit $24
-Time_1:	
+Time_1:
 		ldy #$09
 		dey
 		bne * - 1
@@ -562,13 +524,13 @@ Time_1:
 		nop
 		beq Time_2
 		bit $24
-Time_2:	
+Time_2:
 		ldy #$0a
 		dey
 		bne * - 1
 		inx
 		cpx $d012
 		bne Time_3
-Time_3:	
+Time_3:
 		nop
 }
