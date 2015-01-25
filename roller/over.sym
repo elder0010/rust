@@ -39,6 +39,7 @@
 .label clrspriteRR3=$dd94
 .label scnltbl=$51c8
 .label clrspriteRR2=$db39
+.label transition=$f940
 .label spritelo=$5100
 .label rmljmptbl=$7f50
 .label charscreen2=$4800

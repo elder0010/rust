@@ -2,7 +2,7 @@
 .if (cmdLineVars.get("test")==null) .eval TEST_MODE=false
 							   else .eval TEST_MODE=cmdLineVars.get("test").asBoolean()
 							   
-.var music = LoadSid("..\SID\intro.sid")
+.var music = LoadSid("..\SID\rust_outro.sid")
 
 .import source "variables.asm"
 .import source "../common/functions.asm"

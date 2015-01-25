@@ -1,7 +1,7 @@
 @echo off
-echo ****************
-echo * -> MAKE DEMO *
-echo ****************
+echo *************
+echo * MAKE DEMO *
+echo *************
 set BINPATH="bin"
 set BUILDPATH="build"
 set MAKEALL=1

@@ -1,0 +1,12 @@
+.label bubble_speed=$8110
+.label init_sprites=$7efe
+.label scene_start=$7ea0
+.label clean_screen=$7eea
+.label endmov=$8159
+.label sin_table=$8000
+.label move_bubble=$8120
+.label bubble_sprite=$7fc0
+.label bubble_start_x=$8100
+.label irq=$7ed6 {
+}
+.label dlr=$812e

@@ -31,7 +31,7 @@
 .const	font		=	$C800
 
 // Pointers
-.var sid=LoadSid("psycho.sid")
+.var sid=LoadSid("..\..\SID\rust.sid")
 
 .const	sidplay=sid.play
 
@@ -200,7 +200,7 @@ sprdat:
 .fill 64,[sprite/64]+floor(2.5+[2.5*sin(i*3.1415/32)])
 
 sprite:
-.import c64 "sprites.prg"
+.import c64 "sprites\sprites.bin"
 
 .align $0100
 d011table:

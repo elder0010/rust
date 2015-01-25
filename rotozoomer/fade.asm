@@ -38,7 +38,7 @@
 .var colscreen		=	$d800
 
 
-.var sid=LoadSid("..\SID\psycho.sid")
+.var sid=LoadSid("..\SID\rust.sid")
 
 .if (TEST_MODE==1) {
 	.pc=sid.location "Rust by psicho (SID)"

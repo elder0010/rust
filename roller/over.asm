@@ -1,3 +1,7 @@
+.var	TEST_MODE
+.if (cmdLineVars.get("test")==null) .eval TEST_MODE=false
+							   else .eval TEST_MODE=cmdLineVars.get("test").asBoolean()
+
 // *********
 // CONSTANTS
 // *********
@@ -128,11 +132,11 @@
 // DATA & BUFFERS
 // **************
 
-//.var sid=LoadSid("whipe.sid")
-//;.var sid=LoadSid("loop.sid")
-.var sid=LoadSid("psycho.sid")
-//.var microsid=LoadSid("lightforce.sid")
-.var microsid=LoadSid("rusttune.sid")
+
+.var sid=LoadSid("..\SID\rust.sid")
+.var microsid=LoadSid("..\SID\rust_intro.sid")
+
+.if (TEST_MODE) :BasicUpstart2(start)
 
 .pc=sid.location "loop"
 .fill sid.size, sid.getData(i)
@@ -144,8 +148,10 @@
 // ****
 .pc=$2800 "Main code"
 start:
-	stx retadd+1
-	sty retadd+2
+	.if (!TEST_MODE) {
+		stx retadd+1
+		sty retadd+2	
+	}
 	sei			
 	jsr negatebuffer	// Negate chars
 	jsr preparebuffer	// Init buffers (LO/HI and charcode)
@@ -408,7 +414,12 @@ stopeffect:
 	lda #$c8
 	sta $d016
 	lda #$1b
-	sta $d011	
+	sta $d011
+	.if (TEST_MODE) {
+		ldx #<retadd
+		ldy #>retadd
+		jsr transition
+	}	
 retadd:
 	jmp *
 
@@ -745,9 +756,10 @@ spritertn:
 
 .pc=$ef00 "Micro SID"
 
-.pc=microsid.location "Lightforce (SID)"
+.pc=microsid.location "Play microSID"
 .fill microsid.size, microsid.getData(i)
 
 
 .pc=$F940	"Trasition"
+transition:
 .import c64 "rising.prg"	//Transition
