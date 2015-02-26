@@ -8,8 +8,8 @@
 .const	sidorgpos		=	$a000	// Original sid position (to be relocated)
 .const	sidendpos		=	$c000	// Relocated sid position
 .const	sidrightpos		=	$1000	// Place SID where it can be played
-.const	andora			=	$0400	// Tabella di conversione coord Y
-.const	nextfade		=	$0400	// Tabella di fade
+.const	andora			=	$0400	// Y Coord conversion table
+.const	nextfade		=	$0400	// Fade table
 .const	maincode		=	$3000	// Maincode position
 .const	bitmap			=	$4000	// Bitmap (koala) position
 .const	cllorgpos		=	$c400	// CLL load position
@@ -17,8 +17,8 @@
 
 // Constants
 // *********
-.const	fxlength		=	350		// Lunghezza in frame dell'effetto (450)
-.const	EndColor		= 	BLUE	// Ultimo colore del rotozoomer
+.const	fxlength		=	350		// Number of showed frame (effect duration)
+.const	EndColor		= 	BLUE	// Last rotozoomer color
 .const	waitframe		=	40		// Wait first frame
 
 // Fadetable
@@ -43,10 +43,10 @@
 
 .import source "chunky_macro.asm"
 .import source "variables.asm"
-.import source "chunky_include.sym"				// Blocco linkato
+.import source "chunky_include.sym"				// Linked block
 
-// Tabelle precalcolate
-// ********************
+// Precalc'd tables
+// ****************
 .pc=maincode "Sinus tables"
 sinl:
 .fill 256,<floor($fff*sin(3.1415*i/64))
@@ -101,9 +101,9 @@ scene_start:
 	lda $90
 	bne !-	
 	jsr movekoala	
-	jsr preparetexture	// Esplosione texture ($4000 bytes)	
-	jsr createtable		// Creazione tabelle di quadrati
-	jsr createandoratbl	// Creazione tabella andora (fx)
+	jsr preparetexture	// Explode texture ($4000 bytes)	
+	jsr createtable		// Square tables creation
+	jsr createandoratbl	// "andora" table creation (fx)
 	jsr initvar			
 	jsr prechunky		
 	sei
@@ -130,8 +130,8 @@ waitrst:
 	bpl !-	
 	rts
 
-// Predisposizione della texture in memoria
-// ****************************************
+// Rebuild texture
+// ***************
 .pc=* "Main code"
 preparetexture:
 	ldy #$00
@@ -229,7 +229,7 @@ irqinit:
 bgcolor:
 .byte WHITE,LIGHT_GREEN,YELLOW,LIGHT_GRAY,CYAN,LIGHT_RED,GREEN,GRAY,LIGHT_BLUE,ORANGE,PURPLE,DARK_GRAY,RED,BROWN,BLUE,BLACK
 	
-// Inizializza tutte le variabili
+// Variable initialization
 initvar:
 	lda #$10
 	sta nextscenecounter
@@ -432,10 +432,10 @@ page_1:
 		:point_screen_2()		
 		rts	
 	
-// Calcola il nuovo angolo/zoom in base alle tabelle precalc
-// *********************************************************		
+// Compute new angle/zoom based on precal table
+// ********************************************
 updatefx:		
-		// Aggiorna indice zoom
+		// Update zoom index
 		
 		ldy zoompos
 		iny
@@ -443,13 +443,13 @@ updatefx:
 		lda zoomtab,y
 		sta zoom
 
-		// Aggiorna indice rotazione
+		// Update rotation index
 
 		inc angle1
 		inc angle2
 		inc angle3	
 
-		// Applica lo zoom alla rotazione (multiplicando)
+		// Apply zoom to rotation (multiply)
 		
 		ldy angle2	// u(x)=cos(phi) => sin(90+phi)		
 		ldx sinh,y		
@@ -477,7 +477,7 @@ updatefx:
 		sty incyulo
 		sta incyuhi		
 
-		// Aggiorna indice offset
+		// Update offset index
 		
 		ldx movepos
 		inx
@@ -487,7 +487,7 @@ updatefx:
 	!:
 		stx movepos		
 		
-		// Applica l'offset verticale ed orizzontale
+		// Apply vertical and horizontal index
 		
 		lda possinl,x
 		sta ulo
@@ -501,9 +501,9 @@ updatefx:
 		sta vhi		
 		rts
 
-// ********************************
-// Routine di disegno dell'immagine	
-// ********************************
+// *********************
+// Image drawing routine
+// *********************
 .print "Compute routine: "+toHexString(*)
 compute:	
 	lda incyulo		// 3
@@ -543,7 +543,7 @@ yvh:adc incyvhi		// 3
 	lda incxuhi		// 3
 	rol				// 2
 	sta tmpxuhi		// 3 
-	lda uhi			// 3 Calcolo u(x)
+	lda uhi			// 3 Compute u(x)
 	tay				// 2
 	alr #$fc		// 2
 	sta pixloop+$b	// 4
@@ -560,7 +560,7 @@ yvh:adc incyvhi		// 3
 		sta pixloop+$b+i*20	// 4 - 20*23
 	}
 	ldy vhi				// 3
-	sty pixloop+1		// 3 Calcolo v(x)		
+	sty pixloop+1		// 3 Compute v(x)		
 	ldx vlo				// 3 - 9
 	.for(var i=1;i<SIZEX;i++)
 	{
@@ -600,15 +600,15 @@ pixloop:
 		sta left+1			// 3
 		lda andora,x		// 4
 		sta right+1			// 3		
-		ldy #0				// 2 PIXEL SX: Prendo u(x)		
-		lda (left),y		// 5 Aggiungo u(y) che si trova nel lobyte di (left) -> CARICO COL. NEL LONIBBLE (bit0=0)		
-		ora (right),y		// 5 Aggiungo u(y) che si trova nel lobyte di (right) -> CARICO COL. NEL HINIBBLE (bit0=1)
-		ldy #i				// 2 Salvo nell'area di memoria opportuna
-		sta (ptr),y			// 6 - 34/35 => 18 cicli per pixel -> 34*24
+		ldy #0				// 2 PIXEL SX: load u(x)		
+		lda (left),y		// 5 Add u(y) which is in lobyte of (left)  -> Color is loaded on LONIBBLE (bit0=0)		
+		ora (right),y		// 5 Add u(y) which is in lobyte of (right) -> Color is loaded on HINIBBLE (bit0=1)
+		ldy #i				// 2 Save as two chunky pixels
+		sta (ptr),y			// 6 - 34/35 => 18 cycles per pixel -> 34*24
 	}
 	dec rowcounter	// 5
 	bmi !+			// 2/3
-	lda yulo		// 3
+	lda yulo		// 3 Update u(y)
 iyul:
 	adc #$00		// 2
 	sta yulo		// 3
@@ -617,7 +617,7 @@ iyuh:
 	adc #$00		// 2	
 	sta yuhi		// 3	
 	clc				// 2
-	lda yvlo		// 3
+	lda yvlo		// 3 Update v(y)
 iyvl:
 	adc #$00		// 2
 	sta yvlo		// 3
@@ -629,8 +629,8 @@ iyvh:
 !:	
 	rts
 
-// Crea la tabella AndOra (e crea un'area di memoria vuota a cui puntare)
-// **********************************************************************
+// Create AndOra table
+// *******************
 createandoratbl:
 	ldx #$00
 !:
@@ -760,10 +760,8 @@ mcsave:
 	bne mcload
 	rts
 	
-//fadein:
-//	lda 
 
-// Fader finale
+// Final Fader
 // ************
 fadetable:
 .fill 16,nextfadetbl.get(i)

@@ -5,7 +5,7 @@
 
 .var screenHeight = SIZEY
 
-.print "Indirizzi target: "+toHexString(*)
+.print "Chunky pointers: "+toHexString(*)
 targetLowBuffer1:
 .for (var i = 0 ; i < screenHeight;i++)
     .byte <[getLineAddresses($6000,YOFFSET+screenHeight-i-1)+XOFFSET]
@@ -21,5 +21,3 @@ targetLowBuffer2:
 targetHiBuffer2:
 .for (var i = 0 ; i < screenHeight;i++)
     .byte >[getLineAddresses($6400,YOFFSET+screenHeight-i-1)+XOFFSET]
-
-.print "Fine indirizzi: "+toHexString(*)

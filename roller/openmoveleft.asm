@@ -5,7 +5,7 @@
 openmoveleft:
 	stx $d016			// 4 56						01	-> SPRITE 1
 	
-	// Apertura bordo Full Screen
+	// Open sideborder
 				
 	sta $d016-mode38,x	// 5 =>40 Bad line (Line 0)	02
 	stx $d016			// 4 =>38			

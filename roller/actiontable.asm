@@ -1,52 +1,56 @@
-// Tabelle di azione:
+// Action tables:
 
 // SCROLLTABLE
 // -----------
-// La funzione scroll ha i seguenti parametri:
-// - timing: per quanti frame mantenere l'action (0-63)
+// Scroll function has the following parameters:
+// - timing: how long (in frame) does the action last (0-63)
 // - action: left/stop/right/end
-// Comporre la tabella con una combinazione di funzioni scroll, terminarla con una action "end"
+// The table basically is a set of "left/stop/right" and must be terminated with "end"
 
 scrolltable:
-.byte	scroll(4,left),scroll(4,stop),scroll(28,left)	// Scroll allineato (fix bug a sinistra)
+.byte	scroll(4,left),scroll(4,stop),scroll(28,left)	// "Aligned" scroll (fix full border left bug)
 .byte	scroll(63,stop),scroll(63,stop)
 .byte	scroll(60,stop),scroll(48,stop)
 
 .for(var i=0;i<3;i++) {
-	.byte	scroll(63,right),scroll(1,right)	// Scroll allineato (fix bug a sinistra)	
+	.byte	scroll(63,right),scroll(1,right)	// "Aligned" scroll (fix full border left bug)
 	.byte	scroll(58,stop),scroll(48,stop)
 
-	.byte	scroll(63,left),scroll(1,left)		// Scroll allineato (fix bug a sinistra)	
+	.byte	scroll(63,left),scroll(1,left)		// "Aligned" scroll (fix full border left bug)
 	.byte	scroll(58,stop),scroll(48,stop)
 }
 
 .byte	scroll(37,stop)
 .byte	scroll(12,right)
 .byte	scroll(1,stop)
-.byte	scroll(20,right) //6
+.byte	scroll(20,right)
 .byte	scroll(1,end)
 
 // 63+1+63+63+63+61+1 => 315 -> 1011
 
 // LINETABLE
-// -----------
-// La funzione block ha i seguenti parametri:
-// - direzione: direzione di scrittura left/right/up/down
-// - numero: numero di caratteri (0-31)
-// Comporre la tabella con una combinazione di funzioni block (NON C'E' TERMINATORE, ASSICURARSI DI AVERE ABBASTANZA MOVIMENTI!)
+// ---------
+// Block function has the following parameters:
+// - direction: writing direction left/right/up/down
+// - number: character number (0-31)
+// - type: chr (PETSCII $A0), txt (characters loaded from text label)
+// Volume function has the following parameters:
+// - volume: set volume to this value
+// Beware, there's no terminator: effect total lenght should match scrolltable
+
 
 linetable:
 .for(var i=0;i<5;i++) {
-	// Spiralette discendenti
+	// Descending spirals
 	.byte block(right,3+[i!=0?1:0],chr),block(down,3,chr),block(left,2,chr),block(up,1,chr),block(right,1,chr),block(up,1,chr),block(left,2,chr),block(down,3,chr)
 	.byte block(right,3,chr),block(down,3,chr),block(left,2,chr),block(up,1,chr),block(right,1,chr),block(up,1,chr),block(left,2,chr),block(down,3,chr)
 	.byte block(right,3,chr),block(down,3,chr),block(left,2,chr),block(up,1,chr),block(right,1,chr),block(up,1,chr),block(left,2,chr),block(down,3,chr)
 	.byte block(right,3,chr),block(down,3,chr),block(left,2,chr),block(up,1,chr),block(right,1,chr),block(up,1,chr),block(left,2,chr),block(down,3,chr)
 	.byte block(right,3,chr),block(down,3,chr),block(left,2,chr),block(up,1,chr),block(right,1,chr),block(up,1,chr),block(left,2,chr),block(down,3,chr)
 	.byte block(right,3,chr),block(down,3,chr),block(left,2,chr),block(up,1,chr),block(right,1,chr),block(up,1,chr),block(left,2,chr),block(down,3,chr)
-	// Connessione ultima riga
+	// Lasto row connection
 	.byte block(right,7,chr),block(up,1,chr)
-	// Spiralette ascendenti
+	// Ascending spirals
 	.byte block(left,3,chr),block(up,3,chr),block(right,2,chr),block(down,1,chr),block(left,1,chr),block(down,1,chr),block(right,2,chr),block(up,3,chr)
 	.byte block(left,3,chr),block(up,3,chr),block(right,2,chr),block(down,1,chr),block(left,1,chr),block(down,1,chr),block(right,2,chr),block(up,3,chr)
 	.byte block(left,3,chr),block(up,3,chr),block(right,2,chr),block(down,1,chr),block(left,1,chr),block(down,1,chr),block(right,2,chr),block(up,3,chr)
@@ -82,7 +86,7 @@ linetable:
 
 // TEXT
 // ----
-// Indicare testo e/o caratteri speciali da usare nella linetable (verranno usati sequenzialmente)
+// Put text e/o characters to be used on linetable (they'll be loaded sequentially)
 
 text:
 .byte 160
@@ -93,8 +97,8 @@ text:
 .byte	233,32,32,32,223
 .byte	160
 
-// Variabili varie
-// ---------------
+// Misc Variables
+// --------------
 
 blockdirection:
 .byte	$00

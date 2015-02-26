@@ -211,9 +211,9 @@ sidexit:
 	rti
 
 	
-// ******************************
-// * Determina ordine interrupt *
-// ******************************
+// *****************************
+// * Determine interrupt order *
+// *****************************
 		
 setrasterorder:
 	lda ypos

@@ -1,5 +1,5 @@
-// Costanti
-// ********
+// Constants
+// *********
 .const	raster	=	$2f
 .const	t8lines	=	63*312-1
 
@@ -12,9 +12,9 @@
 	sta irqsaveacc		// 3
 	jmp mainirq			// 3
 
-// ********************************************
-// Routine di attivazione della modalità chunky
-// ********************************************	
+// ******************
+// Activation routine
+// ******************
 stabletimer:		
 	lda #<stablefstirq
 	ldx #>stablefstirq
@@ -75,7 +75,7 @@ nbloop:
 	jmp $4c4f	
 	
 // ************************************************************************
-// Routine per la doppia interruzione
+// Double IRQ routine
 .pc=*	"Double raster stab - First IRQ" 
 stablefstirq:
 	stx sisavex+1
@@ -92,12 +92,12 @@ stablefstirq:
 	
 .pc=*	"Double raster stab - 2nd IRQ"
 stablesecirq:
-	lda #<$dc05	// Reimposto il primo irq
+	lda #<$dc05		// Set NMI handler
 	sta $fffe
-	lda #>$dc05	// Reimposto il primo irq
+	lda #>$dc05
 	sta $ffff			
-	lsr $d019		// Acknowledge dell'irq
-	lda #$00		// Reset timer A e B
+	lsr $d019		// IRQ Acknowledge
+	lda #$00		// Reset timer A and B
 	sta $dc0e
 	sta $dc0f
 	lda #<t8lines
@@ -108,7 +108,7 @@ stablesecirq:
 	nop
 	nop
 	lda #raster+1
-	txs				// Reimposto lo stack pointer
+	txs				// Reload correct stack pointer
 	cmp $d012		//4 - 63+0/1
 	beq synced		//2/3
 synced:		

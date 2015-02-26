@@ -1,4 +1,4 @@
-m16x8:			// 16bit*8bit => 16 bit (hi) [Xa]x[Y] => [AY_]	(X Preservato)
+m16x8:			// 16bit*8bit => 16 bit (hi) [Xa]x[Y] => [AY_]	(X kept)
 				stx T1
 				sty T2+1
                 sta sm1a+1
@@ -42,8 +42,8 @@ T2:
                 rts
 				
 				
-// Crea 4 tabelle di quadrati da usare per la moltiplicazione
-// **********************************************************
+// Create 4 tables of square for multiplication routines
+// *****************************************************
 createtable:
 	lda #$0
 	sta lo

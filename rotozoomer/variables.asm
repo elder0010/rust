@@ -4,7 +4,7 @@
 .const YOFFSET=2	// 4
 
 
-// Tabelle dei quadrati
+// Square table
 .const square1_lo=	$7800		// Computed rt
 .const square1_hi=	$7A00		// Computed rt
 .const square2_lo=	$7C00		// Computed rt
@@ -36,7 +36,7 @@
 .const	fcl			=	$43
 .const	fch			=	$44
 
-//; Calcolo square table
+//; Square table computation
 .const	clo			=	$45
 .const	cmi			=	$46
 .const	chi			=	$47
@@ -47,11 +47,11 @@
 .const	oddmi		=	$4c
 .const	oddhi		=	$4d
 
-//; Miscellanea
+//; Miscellaneous
 .const	zoom		=	$4e
 .const	flipdata	=	$4f
 
-//; Variabili di incremento (16 bit)
+//; Increments (16 bit)
 .const	incxulo	=	$50
 .const	incxuhi	=	$51
 .const	incxvlo	=	$52
@@ -61,13 +61,13 @@
 .const	incyvlo	=	$56
 .const	incyvhi	=	$57
 
-//; Contatore righe
+//; Row counter
 .const	rowcounter	=	$5e
 
-// Temporaneo per le moltiplicazioni
+// Multiplication temp
 .const	T1			=	$5f
 
-// Vettori traslati (16 bit)
+// Translated vectors (16 bit)
 .const	ulo		=	$60
 .const	uhi		=	$61
 .const	vlo		=	$62
@@ -77,14 +77,14 @@
 .const	yvlo	=	$66
 .const	yvhi	=	$67
 
-// Angoli
+// Angles
 .const	angle1	=	$68
 .const	angle2	=	$69
 .const	angle3	=	$6a
 .const	zoompos	=	$6b
 .const	movepos	=	$6c
 
-// Contatori
+// Counters
 .const	counter2=	$6d
 .const	counter3=	$6e
 .const	endpart	=	$6f
@@ -94,7 +94,7 @@
 
 .const	bgcol	=	$71	//  Bg colors
 
-//; Puntatori vari (2 byte)
+//; Misc pointers (2 byte)
 .const	left	=	$72
 .const	right	=	$74
 .const	ptr		=	$76

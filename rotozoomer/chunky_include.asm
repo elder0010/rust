@@ -3,22 +3,22 @@
 // Freshness - 2013
 // **************************
 
-// Uso:
-// Importare il sorgente e poi:
-// - chiamare 	"prechunky"
-// - chiamare	"startchunky"
-// Assicurarsi di essere in modalità 64k RAM e di avere un IRQ in uso in $fffe/$ffff (ad esempio un sid player)
+// Usage:
+// Import source and:
+// - call 	"prechunky"
+// - call	"startchunky"
+// Make sure you're in full RAM mode (only I/O present) and there's a valid IRQ handler in $fffe/$ffff
 
-// Parametri configurabili:
+// Configurable parameters:
 
-.const	vicbank	=	1	// Banco VIC da utilizzare (0,1,2,3)
+.const	vicbank	=	1	// VIC bank (0,1,2,3)
 .const	order	=	1	// Order (1,2)
-// Se 1: bitmap $0000-$1fff e schermi $2000-$3000	- Zona libera: $3600-$3fff
-// Se 2: bitmap $2000-$3fff e schermi $0000-$1000	- Zona libera: $1600-$1fff 
+// Se 1: bitmap $0000-$1fff, LUTs $2000-$3000	- Free zone: $3600-$3fff
+// Se 2: bitmap $2000-$3fff, LUTs $0000-$1000	- Free zone: $1600-$1fff 
 
 
-// Costanti
-// ********
+// Constants
+// *********
 .const	raster	=	$1C
 .const	t8lines	=	63*8-1
 .const	tjitter	=	9-1
@@ -26,10 +26,9 @@
 .const	v2d018	=	$17+[order==1 ? $80:$08]
 .const	v2d011	=	$33+[order==1 ? $08:$00]
 
-// Variabili zero page
+// Zero page variables
 // *******************
 .const	temp	=	$30	// 1 byte
-//.const	flippage=	$31	// 1 byte (Set to 1 to flip page)
 .const	frstrst	=	$32	// 1 byte
 .const	saveacc	=	$33	// 1 byte
 .const	irqback	=	$34	// 2 byte
@@ -37,26 +36,26 @@
 
 .import source "variables.asm"
 
-// ********************************************
-// Routine di inizializzazione schermo/ambiente
-// ********************************************
+// *******************************************
+// Initialization routine (Screen/Environment)
+// *******************************************
 
 .pc=[[vicbank*$40]+[order==1 ? $20:$00]+$10]*$100	"Main chunky code"
 prechunky:	
 	lda #$00
 	sta stopchunky
 	sta stopstatus
-	lda $fffe			// Salvo i vettori IRQ
+	lda $fffe			// Save IRQ vectors
 	sta irqback
 	lda $ffff
 	sta irqback+1	
-	jsr installstackjt	// Predispongo lo stack per essere usato com jump table	
-	jsr preparescreen	// Sistemo la bitmap		
+	jsr installstackjt	// Prepare (part of the) stack to be used as jumptable
+	jsr preparescreen	// Prepare bitmap RAM for chunky
 	rts	
 	
-// ********************************************
-// Routine di attivazione della modalità chunky
-// ********************************************	
+// *************************
+// Chunky activation routine
+// *************************
 
 startchunky:
 !:
@@ -91,7 +90,7 @@ startchunky:
 	rts
 
 // ************************************************************************
-// Routine per la doppia interruzione
+// Double raster IRQ routine
 .print "Double raster stab - First IRQ: "+toHexString(*)
 fstirq:
 	stx savex+1
@@ -108,14 +107,14 @@ fstirq:
 	
 .print "Double raster stab - 2nd IRQ: "+toHexString(*)
 secirq:
-	lda #<$dd05	// Reimposto il primo irq
+	lda #<$dd05		// Set NMI handler on timer
 	sta $fffa
-	lda #>$dd05	// Reimposto il primo irq
+	lda #>$dd05	
 	sta $fffb			
-	lsr $d019		// Acknowledge dell'irq
-	lda #raster		// Setto il prossimo raster irq
+	lsr $d019		// IRQ Acknowledge
+	lda #raster		// Set next raster irq
 	sta $d012			
-	lda #$00		// Reset timer A e B
+	lda #$00		// Reset timers A and B
 	sta $dd0e
 	sta $dd0f
 	lda #<t8lines
@@ -123,20 +122,19 @@ secirq:
 	lda #>t8lines
 	sta $dd07		
 	lda #raster+1
-	txs				// Reimposto lo stack pointer
+	txs				// Reload correct stack pointer
 	cmp $d012		//4 - 63+0/1
 	beq synced		//2/3
 synced:
 	lda #$6c
 	sta $dd05
 	lda #$00
-	sta $d01a		
-	//lda #$00	
+	sta $d01a	
 	sta $dd0e	
 	lda #$82
 	sta $dd0d	
 	lda #RTI
-    sta $DD0C  	
+    sta $DD0C  
 	bit $ea
 	lda #$91
 	sta $dd0f
@@ -207,9 +205,9 @@ v2eventop:
 	pla
 	rti	
 	
-// **********************************
-// Service IRQ (chiamato al raster 0)
-// **********************************
+// ********************************
+// Service IRQ (called by raster 0)
+// ********************************
 serviceirq:
 	pha	
 	lsr $d019
@@ -230,28 +228,28 @@ bfservice:
 	pla
 	rti		
 	
-// Elenco routine di gestione jittering
-// ************************************
-// $x5x5 +0 Massimo jittering
+// Jitteing management routines
+// ****************************
+// $x5x5 +0 Max delay
 // $x4x5 +1
 // $x5x4 +2
 // $x3x5 +3
 // $x5x3 +4
 // $x2x5 +5
 // $x5x2 +6
-// $x1x5 +7 Minimo jittering
+// $x1x5 +7 Min delay
 
-// Ritardo aggiunto: 7	
+// Added delay: 7	
 // *******************
-.pc=[[vicbank*$40+[order==1 ? $20:$00]+$11]*$100+vicbank*$40+[order==1 ? $20:$00]+$15]	"Routine per jitter 7"	
+.pc=[[vicbank*$40+[order==1 ? $20:$00]+$11]*$100+vicbank*$40+[order==1 ? $20:$00]+$15]	"Routine for jitter 7"	
 	jmp [[vicbank*$40+[order==1 ? $20:$00]+$15]*$100+vicbank*$40+[order==1 ? $20:$00]+$13]
 
 .print "Inbetween code 1: "+toHexString(*)
 .import source "chunky_functions.asm"
 	
-// Ritardo aggiunto: 5	
+// Added delay: 5
 // *******************
-.pc=[[vicbank*$40+[order==1 ? $20:$00]+$12]*$100+vicbank*$40+[order==1 ? $20:$00]+$15]	"Routine per jitter 5"	
+.pc=[[vicbank*$40+[order==1 ? $20:$00]+$12]*$100+vicbank*$40+[order==1 ? $20:$00]+$15]	"Routine for jitter 5"	
 	jmp [[vicbank*$40+[order==1 ? $20:$00]+$15]*$100+vicbank*$40+[order==1 ? $20:$00]+$14]
 
 // Move koala
@@ -270,8 +268,8 @@ movekoala:
 	rts	
 	
 
-// Prepara lo schermo per la modalità chunky
-// *****************************************	
+// Prepare bitmap for chunky
+// *************************
 .print "Inbetween code 2: "+toHexString(*)
 
 preparescreen:
@@ -287,17 +285,16 @@ preparescreen:
 	plp
 	rts
 		
-// Ritardo aggiunto: 3
+// Added delay: 3
 // *******************
-.pc=[[vicbank*$40+[order==1 ? $20:$00]+$13]*$100+vicbank*$40+[order==1 ? $20:$00]+$15]	"Routine per jitter 3"	
+.pc=[[vicbank*$40+[order==1 ? $20:$00]+$13]*$100+vicbank*$40+[order==1 ? $20:$00]+$15]	"Routine for jitter 3"	
 	jmp [[vicbank*$40+[order==1 ? $20:$00]+$15]*$100+vicbank*$40+[order==1 ? $20:$00]+$15]
 
 .import source "math.asm"
-.import source "functions.asm"
 	
-// Ritardo aggiunto: 1
+// Added delay: 1
 // *******************
-.pc=[[vicbank*$40+[order==1 ? $20:$00]+$14]*$100+vicbank*$40+[order==1 ? $20:$00]+$15]	"Routine per jitter 1"	
+.pc=[[vicbank*$40+[order==1 ? $20:$00]+$14]*$100+vicbank*$40+[order==1 ? $20:$00]+$15]	"Routine for jitter 1"	
 	sta.a saveacc	
 v1odd:
 	lda #v1both
@@ -312,8 +309,8 @@ v2odd:
 	lda saveacc
 	jmp $dd0c	
 
-// Jump table da copiare nello stack
-// *********************************	
+// Jump table to be copied on stack
+// ********************************
 jumptable:
 .byte	vicbank*$40+[order==1 ? $20:$00]+$15,vicbank*$40+[order==1 ? $20:$00]+$15,vicbank*$40+[order==1 ? $20:$00]+$14
 .byte	vicbank*$40+[order==1 ? $20:$00]+$15,vicbank*$40+[order==1 ? $20:$00]+$13,vicbank*$40+[order==1 ? $20:$00]+$15
@@ -333,22 +330,22 @@ switchscreen:
 	sta v1odd+1
 	rts
 
-// Sposta lo stack più in basso per fare spazio alla jump table
-// ************************************************************	
+// Move current stack to get room for the jump table
+// *************************************************
 installstackjt:
 	sei
-	ldx #$00		// Sposto in basso lo stack
+	ldx #$00		// Move down stack
 !:
 	lda $0119,x
 	sta $0100,x
 	inx
 	cpx #$e8
 	bne !-	
-	tsx				// Aggiorno lo stack pointer
+	tsx				// Update stack pointer
 	txa
 	axs #$19		
 	txs
-	ldx #$08		// Copio la jumptable
+	ldx #$08		// Copy jumptable
 !:
 	lda jumptable,x
 	sta $01e7,x
@@ -357,13 +354,13 @@ installstackjt:
 	cli
 	rts	
 	
-// Ritardo aggiunto: 0/2/4/6
+// Added delay: 0/2/4/6
 // *************************
-.pc=[[vicbank*$40+[order==1 ? $20:$00]+$15]*$100+vicbank*$40+[order==1 ? $20:$00]+$12]	"Routine per jitter 8,6,4,2"	
+.pc=[[vicbank*$40+[order==1 ? $20:$00]+$15]*$100+vicbank*$40+[order==1 ? $20:$00]+$12]	"Jitter routines: 8,6,4,2"	
 	nop
 	nop
 	nop	
-	sta saveacc	// 3 + 7 (IRQ) + 7 (Jitter) + 5 (jmp indiretta)
+	sta saveacc	// 3 + 7 (IRQ) + 7 (Jitter) + 5 (jmp indirect)
 v1even:
 	lda #v1both	// 2	
 	sta $d018	// 4
@@ -380,6 +377,4 @@ v2even:
 .pc=$75a0	"Import fader"
 .import source "fade.sym"
 .import c64 "fade.prg"
-.import source "upblock.asm"	
-	
-	
+.import source "upblock.asm"
